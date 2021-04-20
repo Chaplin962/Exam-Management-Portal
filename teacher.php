@@ -387,7 +387,7 @@ if(@$_GET['q']==5) {
   include_once 'db.php';
   $quiz_id=@$_GET['quiz_id'];
   $name=@$_GET['name'];
-echo'<span class="title1" style="margin-left:40%;font-size:30px;"><b>Remove Questions/Options from '.@$_GET['name'].'</b></span><br/><br/>';
+echo'<span class="title1" style="margin-left:40%;font-size:30px;"><b>Remove Questions from '.@$_GET['name'].'</b></span><br/><br/>';
 $result = mysqli_query($conn,"SELECT * FROM question where quiz_id='$quiz_id'") or die('Error');
 
 echo  '<table class="center">
@@ -402,29 +402,8 @@ while($row = mysqli_fetch_array($result)) {
   $text = $row['text'];
   $ques_id = $row['question_id'];
   $type = $row['type'];
-
-$result_2 = mysqli_query($conn,"SELECT * FROM question_option where question_id='$ques_id'") or die('Error');
-if($type==0)
-{$c2=1;
   echo '<tr><th>'.$c++.'</th><th>'.$text.'</th>
   <td><a href="update.php?q=quesdel&name='.$name.'&quiz_id='.$quiz_id.'&qid='.$ques_id.'" class="button-d">Remove</a></td></tr>';
-
-  while($row = mysqli_fetch_array($result_2)) {
-  $texto = $row['text'];
-  $op_id = $row['option_id'];
-  $isc= $row['is_correct'];
-  if($isc==1)
-  {echo '<tr><td>'.$c2++.'</td><td style="color :green;">'.$texto.'</td>
-  <td><a " href="update.php?q=opdel&name='.$name.'&quiz_id='.$quiz_id.'&op_id='.$op_id.'" class="button-d">Remove</a></td></tr>';}
-  else if($isc==0)
-  {echo '<tr><td>'.$c2++.'</td><td style="color :red;">'.$texto.'</td>
-  <td><a href="update.php?q=opdel&name='.$name.'&quiz_id='.$quiz_id.'&op_id='.$op_id.'" class="button-d">Remove</a></td></tr>';}
-  
-  }
-}
-else if($type==1)
-{ echo '<tr><th>'.$c++.'</th><th>'.$text.'</th>
-  <td><a href="update.php?q=quesdel&name='.$name.'&quiz_id='.$quiz_id.'&qid='.$ques_id.'" class="button-d">Remove</a></td></tr>';}
 }
 $c=0;
 echo '</table></div></div>';
@@ -439,7 +418,7 @@ if(@$_GET['q']==6)
     $sql = "SELECT * FROM student_marks WHERE quiz_id='$quiz_id'";
     $result = mysqli_query($con,$sql);
 
-echo'<table style="text-align:center;margin:0 auto;width:50%;padding:10px;">
+echo'<div id="test-div"></div><table style="text-align:center;margin:0 auto;width:50%;padding:10px;">
     <tr>
       <th>Roll No.</th>
       <th>Student Name</th>
@@ -447,9 +426,11 @@ echo'<table style="text-align:center;margin:0 auto;width:50%;padding:10px;">
 
       while($students = mysqli_fetch_assoc($result))
       {$stid=$students['student_id'];
-    $sub_time=mysqli_query($con,"SELECT sub_time FROM student_marks WHERE quiz_id='$quiz_id'and student_id='$stid'");
-    $end_time=mysqli_query($con,"SELECT end_time FROM quiz WHERE quiz_id='$quiz_id'");
-    if($sub_time<$end_time){
+    $sub_timeq=mysqli_query($con,"SELECT sub_time FROM student_marks WHERE quiz_id='$quiz_id'and student_id='$stid'");
+    $sub_time=mysqli_fetch_assoc($sub_timeq);
+    $end_timeq=mysqli_query($con,"SELECT end_time FROM quiz WHERE quiz_id='$quiz_id'");
+    $end_time=mysqli_fetch_assoc($end_timeq);
+    if($sub_time['sub_time']<$end_time['end_time']){
        $stuff=mysqli_query($con2, "SELECT * FROM student_list where student_id='$stid'");
        $student_name=mysqli_fetch_assoc($stuff);
    echo'<tr>
@@ -457,7 +438,7 @@ echo'<table style="text-align:center;margin:0 auto;width:50%;padding:10px;">
           </td>';
           echo"
            <td style='color:green;'>{$student_name['name']}</td></tr>";}
-   else if($sub_time>=$end_time){
+   else if($sub_time['sub_time']>=$end_time['end_time']){
        $stuff=mysqli_query($con2, "SELECT * FROM student_list where student_id='$stid'");
        $student_name=mysqli_fetch_assoc($stuff);
    echo'<tr>
@@ -496,29 +477,44 @@ if(@$_GET['q']==7) {
                 <td>Subjective Marks</td>
                 <td>Objective Marks</td>
                 <td>Total Marks</td>
-                <td>Add Subjective Marks</td>
-                <td>Remove Subjective Marks</td>
-                <td>Add Objective Marks</td>
-                <td>Remove Objective Marks</td>
+                <td>Add/Remove Subjective Marks</td>
+                <td>Add/Remove Objective Marks</td>
             </tr>
        <tr>";
-                    while ($row = mysqli_fetch_array($result)) {
-
+  while ($row = mysqli_fetch_array($result)) {
   $con2=mysqli_connect("localhost","root", "", "simp1");
        $std_id=$row['student_id'];
        $stuff=mysqli_query($con2, "SELECT * FROM student_list where student_id='$std_id'");
        $student_name=mysqli_fetch_assoc($stuff);
-                        echo "<tr><td>{$ranking}</td>
+       $sub_timeq=mysqli_query($con,"SELECT sub_time FROM student_marks WHERE quiz_id='$qid'and student_id='$std_id'");
+       $sub_time=mysqli_fetch_assoc($sub_timeq);
+       $end_timeq=mysqli_query($con,"SELECT end_time FROM quiz WHERE quiz_id='$qid'");
+       $end_time=mysqli_fetch_assoc($end_timeq);
+       if($sub_time['sub_time']<$end_time['end_time']){
+                        echo "<tr style='text-decoration: none;color:green;'><td>{$ranking}</td>
                         <td>{$student_name['name']}</td>
                         <td>{$row['marks_sub']}</td>
                         <td>{$row['marks_obj']}</td>
                         <td>{$row['marks_tot']}</td>";
                         echo'
-                        <td><input id="marks_sub" name="marks_sub" value="0" type="number"></td>
-                        <td><input id="marks_subr" name="marks_subr" value="0" type="number"></td>
-                        <td><input id="marks_obj" name="marks_obj" value="0" type="number"></td>
-                        <td><input id="marks_objr" name="marks_objr" value="0" type="number"></td></tr>';
+                        <td>+<input id="marks_sub" name="marks_sub[]" value="0" type="number"><br/>
+                        - <input id="marks_subr" name="marks_subr[]" value="0" type="number"></td>
+                        <td>+<input id="marks_obj" name="marks_obj[]" value="0" type="number"><br/>
+                        - <input id="marks_objr" name="marks_objr[]" value="0" type="number"></td></tr>';
                         $ranking++;}
+                        else if($sub_time['sub_time']>=$end_time['end_time']){
+                          echo "<tr style='text-decoration: none;color:red;'><td>{$ranking}</td>
+                        <td>{$student_name['name']}</td>
+                        <td>{$row['marks_sub']}</td>
+                        <td>{$row['marks_obj']}</td>
+                        <td>{$row['marks_tot']}</td>";
+                        echo'
+                        <td>+<input id="marks_sub" name="marks_sub[]" value="0" type="number"><br/>
+                        - <input id="marks_subr" name="marks_subr[]" value="0" type="number"></td>
+                        <td>+<input id="marks_obj" name="marks_obj[]" value="0" type="number"><br/>
+                        - <input id="marks_objr" name="marks_objr[]" value="0" type="number"></td></tr>';
+                        $ranking++;
+                        }}
             echo '</tr></table>
             <div class="form-group">
   <label class="col-md-12 control-label" for=""></label>
