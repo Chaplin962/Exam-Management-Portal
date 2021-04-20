@@ -10,7 +10,7 @@ body { overflow-y: scroll; }
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  width: 80%;
 }
 
 td, th {
@@ -204,7 +204,7 @@ tr:nth-child(odd) {
 	right: 0;		
 	background-color: #232323;
 	z-index: 31;
-	width: 400%;	
+	width: 400px;	
 	box-shadow:
   		0 2.8px 2.2px rgba(0, 0, 0, 0.034),
   		0 6.7px 5.3px rgba(0, 0, 0, 0.048),
@@ -224,7 +224,7 @@ tr:nth-child(odd) {
 	letter-spacing: 0.1em;
 	text-decoration: none;
 	margin: 10px;
-	width: 300%;
+	width: 300px;
 	display: inline-block;	
 }
 
@@ -427,13 +427,13 @@ tr:nth-child(odd) {
 	width: 100%;	
 }
 #trailtest1-qboard {
-	width: 100%;
+	width: 80%;
 	height: 100%;
 	float: left;	
 	overflow-y: scroll;
 }
 #trailtest1-qpallete {
-	width: 100%;
+	width: 20%;
 	height: 100%;
 	float: right;	
 	background-color: #C1D7E5;
@@ -544,7 +544,7 @@ tr:nth-child(odd) {
   	position: relative;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1200px) {
 	.navbar-menus { display: none; }
 	#navbar-menubut { display: inline; }
 	#clg-template { width: 100%; height: 120vw; }
@@ -574,7 +574,7 @@ tr:nth-child(odd) {
 	}
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 600px) {
 	.navbar-menus {
 		display: none;
 	}	
@@ -590,9 +590,9 @@ tr:nth-child(odd) {
 	}
 
 }
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 500px) {
 	#side-bar { width: 80vw; }
 }
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 320px) {
 	#side-bar { width: 100vw; }
 }

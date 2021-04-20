@@ -22,23 +22,14 @@ $end_time = $_POST['end_time'];
 $total= $_POST['total'];
 $noc= $_POST['noc'];
 $id=uniqid();
-if($total>=1){
+
 if($name)
-{$subpt1="INSERT INTO quiz(quiz_id,created_for, name, start_time, end_time, created_by) VALUES ('$id','$course','$name','$start_time','$end_time','$tname')";
+{$subpt1="INSERT INTO quiz(quiz_id,created_for, name, start_time, end_time, created_by) VALUES ('$id','$course', '$name', '$start_time', '$end_time','$teacher_id')";
 if (mysqli_query($conn,$subpt1)){echo "New Test has been created successfully !";}
 else {echo "Error: " . $subpt1 . ":-" . mysqli_error($conn);}
 header("location:teacher.php?q=1&step=2&eid=$id&n=$total&noc=$noc");
 mysqli_close($conn);}
 else{header("location:teacher.php?q=1");}
-}
-else{echo '<script>alert("Add atleast one question!")</script>
-
-	<script>
-{
-  window.history.back();
-}
-</script>';
-}
 }}
 
 //edit quiz
@@ -145,7 +136,7 @@ if(@$_GET['q']=='des' && $_SESSION['role']=='Teacher')
 			for($i=0;$i<count($arr);$i++){
 				$total=$total+$arr[$i];	}
 
-            //student id
+            //dummy data
 			$student=$_POST['std_id'];
 		
 			//echo"this is $student and marks scored is $total";

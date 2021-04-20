@@ -21,7 +21,7 @@ $_SESSION['name'] = $tname;
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
   <!-- Title bar -->
-  <title>Teacher Side &nbsp;|&nbsp; SIMP</title>
+  <title>Teacher Part &nbsp;|&nbsp; Project</title>
   <link rel = "icon" type = "image/png" href = "stock/logo.png">
 
 
@@ -64,7 +64,7 @@ $_SESSION['name'] = $tname;
 
   <body class="current-page" id="tests">
   <div id="navbar">
-    <p id="navbar-simp">SIMP</p>
+    <p id="navbar-simp">Project</p>
 
     <div id="navbar-profile">
       <p id="navbar-arrow"><i id="navbar-arrow-control"></i></p>
@@ -317,7 +317,7 @@ echo '
 <!--remove quiz page-->
 <?php
 if(@$_GET['q']==3){
-include_once 'db.php';
+  include_once 'db.php';
 date_default_timezone_set('Asia/Kolkata');
 $date = date('Y-m-d H:i:s');
 $result = mysqli_query($conn,"SELECT * FROM quiz where created_by = '$teacher_id' and start_time > '$date' order by start_time asc") or die('Error');
@@ -331,7 +331,7 @@ echo  '<div id="test-div"></div>
     <th> </th>
   </tr>';
 $c=1;
-while($row = mysqli_fetch_array($result)){
+while($row = mysqli_fetch_array($result)) {
   $name = $row['name'];
   $start = $row['start_time'];
   $end = $row['end_time'];
@@ -379,7 +379,7 @@ while($row = mysqli_fetch_array($result)) {
 $c=0;
 echo '</table></div></div>';
 }
-?>
+  ?>
 
 <!--remove question-->
 <?php
@@ -387,7 +387,7 @@ if(@$_GET['q']==5) {
   include_once 'db.php';
   $quiz_id=@$_GET['quiz_id'];
   $name=@$_GET['name'];
-echo'<span class="title1" style="margin-left:40%;font-size:30px;"><b>Remove Questions from '.@$_GET['name'].'</b></span><br/><br/>';
+echo'<span class="title1" style="margin-left:40%;font-size:30px;"><b>Remove Questions/Options from '.@$_GET['name'].'</b></span><br/><br/>';
 $result = mysqli_query($conn,"SELECT * FROM question where quiz_id='$quiz_id'") or die('Error');
 
 echo  '<table class="center">
@@ -403,8 +403,28 @@ while($row = mysqli_fetch_array($result)) {
   $ques_id = $row['question_id'];
   $type = $row['type'];
 
+$result_2 = mysqli_query($conn,"SELECT * FROM question_option where question_id='$ques_id'") or die('Error');
+if($type==0)
+{$c2=1;
   echo '<tr><th>'.$c++.'</th><th>'.$text.'</th>
   <td><a href="update.php?q=quesdel&name='.$name.'&quiz_id='.$quiz_id.'&qid='.$ques_id.'" class="button-d">Remove</a></td></tr>';
+
+  while($row = mysqli_fetch_array($result_2)) {
+  $texto = $row['text'];
+  $op_id = $row['option_id'];
+  $isc= $row['is_correct'];
+  if($isc==1)
+  {echo '<tr><td>'.$c2++.'</td><td style="color :green;">'.$texto.'</td>
+  <td><a " href="update.php?q=opdel&name='.$name.'&quiz_id='.$quiz_id.'&op_id='.$op_id.'" class="button-d">Remove</a></td></tr>';}
+  else if($isc==0)
+  {echo '<tr><td>'.$c2++.'</td><td style="color :red;">'.$texto.'</td>
+  <td><a href="update.php?q=opdel&name='.$name.'&quiz_id='.$quiz_id.'&op_id='.$op_id.'" class="button-d">Remove</a></td></tr>';}
+  
+  }
+}
+else if($type==1)
+{ echo '<tr><th>'.$c++.'</th><th>'.$text.'</th>
+  <td><a href="update.php?q=quesdel&name='.$name.'&quiz_id='.$quiz_id.'&qid='.$ques_id.'" class="button-d">Remove</a></td></tr>';}
 }
 $c=0;
 echo '</table></div></div>';
@@ -466,8 +486,7 @@ if(@$_GET['q']==7) {
 
                 /* Fetch Rows from the SQL query */
                 if ($row=mysqli_num_rows($result)) {
-                  echo "<div id='test-div'></div>
-                  <table  style='font-size:8mm;margin-left: auto;margin-right: auto;border: 5px solid black;'>
+                  echo "<table  style='font-size:8mm;margin-left: auto;margin-right: auto;border: 5px solid black;'>
         <!--this is first row for naming table top column -->
             <tr style='font-size: 12mm;'>
                 <td>Rank</td>
@@ -536,7 +555,7 @@ if(@$_GET['q']==9) {
      echo'<h1>Answer Sheet for '.$quiz.'</h1>';
 
 echo'<!--this is the starting of page(after navbar) -->
-<form method="post" action="update.php?q=des">
+<form method="post" action="update.php?q=des&">
   <table id="ans_table" style="width:70%;font-size:8mm;margin-left: auto;margin-right: auto;">
 
     <tr style="font-size: 12mm;">
@@ -546,7 +565,7 @@ echo'<!--this is the starting of page(after navbar) -->
             <td  width="15%">NMarks</td>
             <td  width="15%">Marks</td>
     </tr>';   
-
+  
          $con = mysqli_connect("localhost","root", "", "quiz");
          
          // this varible will be used to get quiz id and student id
@@ -578,11 +597,20 @@ if($sub_time>=$end_time){$cnt++;
       echo'<td> Enter marks to be deducted for late submission(with symbol): </td><td></td><td></td><td></td><td><input type="number" placeholder="" name="arr['.$cnt.']" value=0></td>';}
       echo' 
   </table>';
-
+  
       echo'
     <input type="submit" name="submit" value="SUBMIT" 
     style=" border:outset;background-color: #4CAF50;padding: 15px 32px;font-size: 16px;margin-left: 50%;"> 
-</form>';
+</form>
+
+  <!--this is button to go to previous page-->       
+  <button onclick="goBack()" style="border:outset;background-color: #f44336;padding: 15px 32px;font-size: 16px;margin-left: 50%;">Previous</button>
+    <script>
+      function goBack() {
+      window.history.back();
+      }
+    </script>';
+
 }
 ?>
 

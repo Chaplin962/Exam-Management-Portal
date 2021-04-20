@@ -75,12 +75,12 @@ $courses_no = $row['courses_no'];
 <script type="text/javascript" src="effectFiles//effect.js"></script>
 
 <!-- Title bar -->
-<title>Profile | SIMP</title>
+<title>Profile | Project</title>
 <link rel = "icon" type = "image/png" href = "stock/logo.png">
 
 <div id="navbar">
     <img src="stock/logo.png" id="navbar-logo">
-    <p id="navbar-simp">SIMP</p>
+    <p id="navbar-simp">Project</p>
     <div id="navbar-profile">
 		<p id="navbar-arrow"><i id="navbar-arrow-control"></i></p>
 		<img src="stock/dp.jpeg" id="navbar-dp">

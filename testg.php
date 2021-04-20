@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
 	<!-- Title bar -->
-	<title>Trail test - 1 &nbsp;|&nbsp; SIMP</title>
+	<title>Trail test - 1 &nbsp;|&nbsp; Project</title>
 	<link rel = "icon" type = "image/png" href = "#">
 
 	<!-- Style sheet -->
@@ -64,7 +64,7 @@ $con = mysqli_connect("localhost", "root", "", "quiz");
 
 <body class="current-page" id="tests">
 	<div id="navbar">
-		<p id="navbar-simp">SIMP</p>
+		<p id="navbar-simp">Project</p>
 
 		<div id="navbar-profile">
 			<p id="navbar-arrow"><i id="navbar-arrow-control"></i></p>
@@ -108,7 +108,7 @@ $con = mysqli_connect("localhost", "root", "", "quiz");
 		$submit=mysqli_fetch_assoc($submit_res);
 		date_default_timezone_set('Asia/Kolkata');
 		$today = date("Y-m-d H:i:s");
-		$time_q = "SELECT * FROM quiz WHERE quiz_id='".$store_id."'";
+		$time_q = "SELECT start_time , end_time FROM quiz WHERE quiz_id='".$store_id."'";
 		$time_res = mysqli_query($con , $time_q);
 		$time_fin = mysqli_fetch_assoc($time_res);
 		$end_date = $time_fin['end_time'];
@@ -118,9 +118,7 @@ $con = mysqli_connect("localhost", "root", "", "quiz");
 		if($today < $start_date ){$time = 2;}
 		if(($submit['num4']==0 && $time==1)|| $time==0):
 		$qres=mysqli_query($con, ("SELECT * FROM question WHERE quiz_id='".$store_id."' ORDER BY rand()" ));
-		$i1=1;
-		if($time!=0)
-		{echo'<h1 style="text-align:center;">Quiz : '.$time_fin['name'].'<!-- set by '.$time_fin['created_by'].'--></h1><br></br><p>Timer: </p><p id="demo"></p>';}
+		$i1=1;if($time!=0){echo'Timer: <p id="demo"></p>';}
 		while($q=mysqli_fetch_assoc($qres)):
 		$cares=mysqli_query($con, ("SELECT text FROM question_option WHERE question_id='".$q['question_id']."' AND is_correct='1'"));
 		?>
@@ -132,8 +130,7 @@ $con = mysqli_connect("localhost", "root", "", "quiz");
 					</p>
 				</div>
 				<div class="tooltip"><img style="margin-top: 15px;margin-left: 10px; height: 17px; width:17px;" src="stock/info.jpg">
-  				<span class="tooltiptext"><?php echo'Positive Marks: '.$q['pmarks'].'
-  				Negative Marks: '.$q['nmarks'].'';?></span>
+  				<span class="tooltiptext"><?php echo'Positive Marks: '.$q['pmarks'].' Negative Marks: '.$q['nmarks'].'';?></span>
 				</div>
 				<br><br><br>
 				<div class="trailtest1-bodys"><p class="trailtest1-bodys-texts">

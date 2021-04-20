@@ -22,7 +22,7 @@ $courses_no = $row['courses_no'];?>
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
 	<!-- Title bar -->
-	<title>Tests-s &nbsp;|&nbsp; SIMP</title>
+	<title>Tests-s &nbsp;|&nbsp; Project</title>
 	<link rel = "icon" type = "image/png" href = "stock/logo.png">
 
 	<!-- Style sheet -->
@@ -53,7 +53,7 @@ $courses_no = $row['courses_no'];?>
 
 <body class="current-page" id="tests">
 	<div id="navbar">
-		<p id="navbar-simp">SIMP</p>
+		<p id="navbar-simp">Project</p>
 
 		<div id="navbar-profile">
 			<p id="navbar-arrow"><i id="navbar-arrow-control"></i></p>

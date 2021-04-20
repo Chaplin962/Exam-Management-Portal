@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
 	<!-- Title bar -->
-	<title>Trail test - 1 &nbsp;|&nbsp; SIMP</title>
+	<title>Trail test - 1 &nbsp;|&nbsp; Project</title>
 	<link rel = "icon" type = "image/png" href = "#">
 
 	<!-- Style sheet -->
@@ -55,7 +55,7 @@ $con = mysqli_connect("localhost", "root", "", "quiz");
 ?>
   <body class="current-page" id="tests">
   <div id="navbar">
-    <p id="navbar-simp">SIMP</p>
+    <p id="navbar-simp">Project</p>
 
     <div id="navbar-profile">
       <p id="navbar-arrow"><i id="navbar-arrow-control"></i></p>
@@ -83,8 +83,9 @@ $con = mysqli_connect("localhost", "root", "", "quiz");
     </div>
   </div>
 
-  <div id="side-bar">
+  <div id="side-bar">   
     <div id="side-profile-bar">
+      <a href="#" class="side-profile-bar-texts">Your profile</a>
           <form method="post" action="index.php">    
     <div>
         <button type="submit" class="side-bar-texts" name="signout">Sign Out</button>
