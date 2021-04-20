@@ -486,12 +486,20 @@ if(@$_GET['q']==7) {
 
                 /* Fetch Rows from the SQL query */
                 if ($row=mysqli_num_rows($result)) {
-                  echo "<table  style='font-size:8mm;margin-left: auto;margin-right: auto;border: 5px solid black;'>
+                  echo'<div id="test-div"></div><form class="form-horizontal title1" name="form" action="update.php?q=edmrks&qid='.$qid.'"  method="POST">
+                  <fieldset>';
+                  echo "<table  style='font-size:4mm;margin-left: auto;margin-right: auto;border: 5px solid black;'>
         <!--this is first row for naming table top column -->
-            <tr style='font-size: 12mm;'>
+            <tr style='font-size: 5mm;'>
                 <td>Rank</td>
                 <td>Student name</td>
-                <td>Marks</td>
+                <td>Subjective Marks</td>
+                <td>Objective Marks</td>
+                <td>Total Marks</td>
+                <td>Add Subjective Marks</td>
+                <td>Remove Subjective Marks</td>
+                <td>Add Objective Marks</td>
+                <td>Remove Objective Marks</td>
             </tr>
        <tr>";
                     while ($row = mysqli_fetch_array($result)) {
@@ -502,9 +510,26 @@ if(@$_GET['q']==7) {
        $student_name=mysqli_fetch_assoc($stuff);
                         echo "<tr><td>{$ranking}</td>
                         <td>{$student_name['name']}</td>
-                        <td>{$row['marks_tot']}</td></tr>";
+                        <td>{$row['marks_sub']}</td>
+                        <td>{$row['marks_obj']}</td>
+                        <td>{$row['marks_tot']}</td>";
+                        echo'
+                        <td><input id="marks_sub" name="marks_sub" value="0" type="number"></td>
+                        <td><input id="marks_subr" name="marks_subr" value="0" type="number"></td>
+                        <td><input id="marks_obj" name="marks_obj" value="0" type="number"></td>
+                        <td><input id="marks_objr" name="marks_objr" value="0" type="number"></td></tr>';
                         $ranking++;}
-            echo "</tr>\n</table>";}
+            echo '</tr></table>
+            <div class="form-group">
+  <label class="col-md-12 control-label" for=""></label>
+  <div class="col-md-12"> 
+    <input  type="submit" name="submit"style="margin-left:45%" class="btn btn-primary" value="Submit" class="btn btn-primary"/>
+  </div>
+</div>
+
+</fieldset>
+</form></div>';}
+            
           }
             ?>
 <!--test-t page-->

@@ -157,4 +157,23 @@ if(@$_GET['q']=='des' && $_SESSION['role']=='Teacher')
 			}
 			header("location:teacher.php?q=6&quiz_id=$quiz_id");
 		}
+
+		if(@$_GET['q']=='edmrks' && $_SESSION['role']=='Teacher')
+		{$con = mysqli_connect("localhost","root", "", "quiz");
+			$marks_sub=$_POST['marks_sub'];
+			$marks_obj=$_POST['marks_obj'];
+			$marks_subr=$_POST['marks_subr'];
+			$marks_objr=$_POST['marks_objr'];
+			$qid=$_GET['qid'];
+            $result = mysqli_query($con, "SELECT * ,(marks_sub + marks_obj) AS marks_tot FROM student_marks where quiz_id='$qid' ORDER BY marks_tot DESC");
+			$i=0;
+			while ($row = mysqli_fetch_array($result)) 
+			{$student_id=$row['student_id'];
+			$marks_sub2= (int)$row['marks_sub'] + (int)$marks_sub[$i] - (int)$marks_subr[$i];
+			$marks_obj2= (int)$row['marks_obj'] + (int)$marks_obj[$i] - (int)$marks_objr[$i];
+			echo "$marks_sub[$i] $marks_subr[$i]";
+			mysqli_query($con,"UPDATE student_marks set marks_sub='$marks_sub2', marks_obj='$marks_obj2' WHERE student_id='$student_id' and quiz_id='$qid'");
+			$i++;}
+			header("location:teacher.php?q=7&qid=$qid");
+		}
 ?>
