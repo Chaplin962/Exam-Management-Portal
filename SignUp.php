@@ -35,7 +35,7 @@ include_once 'db.php';
                 $result = mysqli_query($con2, $query);
                 if(mysqli_num_rows($result)==0) {
                     $otp = rand(100000, 999999);
-                    mail($email, "Simp OTP", "The OTP for Simp Sign up is : ".$otp, "");                
+                    mail($email, "Exam Management Portal One Time Password", "The OTP for EMP Sign up is : ".$otp, "");                
                     $_SESSION['otp']=$otp;
                     $_SESSION['step']=2;
                 }
@@ -94,7 +94,7 @@ include_once 'db.php';
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
 <!-- Title bar -->
-<title>Sign Up | Simp</title>
+<title>Sign Up | EMP</title>
 <link rel = "icon" type = "image/png" href = "stock/logo.png">
 
 <!-- Style sheet -->

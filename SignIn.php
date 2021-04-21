@@ -50,7 +50,7 @@ include_once 'db.php';
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
 <!-- Title bar -->
-<title>Sign In | Simp</title>
+<title>Sign In | EMP</title>
 <link rel = "icon" type = "image/png" href = "stock/logo.png">
 
 <!-- Style sheet -->
