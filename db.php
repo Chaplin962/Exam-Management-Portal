@@ -1,11 +1,11 @@
 <?php
-    /*Offline Development
-    $servername='localhost';
+    //Offline Development
+    /*$servername='localhost';
     $username='root';
     $password='';
     $dbname = 'quiz';
     $con=mysqli_connect($servername,$username,$password,$dbname);
-        
+
     $servername2='localhost';
     $username2='root';
     $password2='';

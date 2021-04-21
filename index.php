@@ -69,6 +69,7 @@ include_once 'db.php';
 ?>
 
 <?php
+include_once 'db.php';
 include "navbar.php";
 ?>
 <!-- Title bar -->
