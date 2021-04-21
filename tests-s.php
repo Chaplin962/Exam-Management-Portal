@@ -21,7 +21,7 @@ $courses_no = $row['courses_no'];?>
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
 	<!-- Title bar -->
-	<title>Tests-s &nbsp;|&nbsp; Project</title>
+	<title>Tests &nbsp;|&nbsp; EMP</title>
 	<link rel = "icon" type = "image/png" href = "stock/logo.png">
 
 	<!-- Style sheet -->

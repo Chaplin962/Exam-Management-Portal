@@ -1,12 +1,17 @@
 <?php
-session_start();
 include_once 'db.php';
+session_start();
 
 $errors = array();
 
 $flag = 0;
 
 $email = $_SESSION['email'];
+$query = "SELECT * FROM user_sign WHERE email='$email'";
+$result = mysqli_query($con2, $query);
+$row = mysqli_fetch_assoc($result);
+$password = $row['password'];
+$_SESSION['password'] = $password;
 if($_SESSION['role']=='Admin') $query = "SELECT * FROM admin_list WHERE email='$email'";
 if($_SESSION['role']=='Teacher') $query = "SELECT * FROM teacher_list WHERE email='$email'";
 if($_SESSION['role']=='Student') $query = "SELECT * FROM student_list WHERE email='$email'";
@@ -20,11 +25,7 @@ if($_SESSION['role']=='Student') {
   $_SESSION['student_id'] = $student_id;  
   $courses_no = $row['courses_no'];
 }
-$query = "SELECT * FROM user_sign WHERE email='$email'";
-$result = mysqli_query($con2, $query);
-$row = mysqli_fetch_assoc($result);
-$password = $row['password'];
-$_SESSION['password'] = $password;
+
 
 if(isset($_POST['change_name'])) {
   $flag = 1;
@@ -85,6 +86,11 @@ if($_SESSION['role']=='Student') {
 
 if($flag == 1) {
   $email = $_SESSION['email'];  
+  $query = "SELECT * FROM user_sign WHERE email='$email'";
+  $result = mysqli_query($con2, $query);
+  $row = mysqli_fetch_assoc($result);
+  $password = $row['password'];
+  $_SESSION['password'] = $password;  
   if($_SESSION['role']=='Admin') $query = "SELECT * FROM admin_list WHERE email='$email'";
   if($_SESSION['role']=='Teacher') $query = "SELECT * FROM teacher_list WHERE email='$email'";
   if($_SESSION['role']=='Student') $query = "SELECT * FROM student_list WHERE email='$email'";
@@ -97,12 +103,7 @@ if($flag == 1) {
     $student_id = $row['student_id'];
     $_SESSION['student_id'] = $student_id;    
     $courses_no = $row['courses_no'];
-  }
-  $query = "SELECT * FROM user_sign WHERE email='$email'";
-  $result = mysqli_query($con2, $query);
-  $row = mysqli_fetch_assoc($result);
-  $password = $row['password'];
-  $_SESSION['password'] = $password;
+  }  
 }
 
 ?>
@@ -125,7 +126,7 @@ if($flag == 1) {
 include "navbar.php";
 ?>
 <!-- Title bar -->
-<title>Profile | EMP</title>
+<title>Profile | Simp</title>
 
 <header class="ScriptHeader">
     <div class="rt-container">
@@ -198,7 +199,14 @@ include "navbar.php";
                 <td><input name="name" class="input_boxes" value = "<?php echo $name;?>" ></td>
                 <td><button type="submit" name="change_name" class="change_buttons">Change</button></td>
               </tr>
-                
+
+              <tr>
+                <th width="30%">Profile Picture	</th>
+                <td width="2%">:</td>
+                <td><input type="file" name="image" id="image" class="input_boxes"></td>
+                <td><input type="submit" name="upload" id="upload" value="Upload" class="change_buttons"></td>       
+              </tr>                  
+
               <tr>
                 <th width="30%">New Password	</th>
                 <td width="2%">:</td>
@@ -241,12 +249,11 @@ include "navbar.php";
                 <td><input type="text" name="course_name" placeholder="Enter Course name" class="input_boxes"></td>
                 <td><button type="submit" name="add_course" class="change_buttons">Add Course</button></td>
               </tr>
-              <?php $crss=$row['course'];
-              for($i=1;$i<=$courses_no;$i++) : ?>
+              <?php for($i=1;$i<=$courses_no;$i++) : ?>
                 <tr>
                 <th width="30%">Course <?php echo "$i"; ?></th>
                 <td width="2%">:</td>
-                <td><?php echo $crss[$i] ?></td>
+                <td><?php echo $row['course_'.$i] ?></td>
                 <td><button type="submit" name="<?php echo "remove_course_".$i; ?>" class="change_buttons">Remove Course</button></td>
                 </tr>
               <?php endfor; ?>

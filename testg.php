@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
 	<!-- Title bar -->
-	<title>Trail test - 1 &nbsp;|&nbsp; Project</title>
+	<title>Give Test &nbsp;|&nbsp; EMP</title>
 	<link rel = "icon" type = "image/png" href = "#">
 
 	<!-- Style sheet -->
