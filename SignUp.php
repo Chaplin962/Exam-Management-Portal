@@ -31,10 +31,17 @@ include_once 'db.php';
 
             if( isset($_SESSION['role']) ) {
                 $_SESSION['email']=$email;
-                $otp = rand(100000, 999999);
-                mail($email, "Simp OTP", "The OTP for Simp Sign up is : ".$otp, "");                
-                $_SESSION['otp']=$otp;
-                $_SESSION['step']=2;
+                $query = "Select * FROM user_sign WHERE email='$email'";
+                $result = mysqli_query($con2, $query);
+                if(mysqli_num_rows($result)==0) {
+                    $otp = rand(100000, 999999);
+                    mail($email, "Simp OTP", "The OTP for Simp Sign up is : ".$otp, "");                
+                    $_SESSION['otp']=$otp;
+                    $_SESSION['step']=2;
+                }
+                else {
+                    array_push($errors, "Email already signed up.");
+                }             
             }
             else {
                 array_push($errors, "Email not in admin's list. Contact Admin.");
@@ -70,7 +77,7 @@ include_once 'db.php';
         if(count($errors) == 0) {
             $email = $_SESSION['email'];
             $password = md5($password);
-            $role = $_SESSION['role'];
+            $role = $_SESSION['role'];            
             $signstatus = 1;            
             $query = "INSERT INTO user_sign (email, password, role, signstatus) VALUES ('$email', '$password', '$role', '$signstatus')";
             mysqli_query($con2, $query);
@@ -110,7 +117,7 @@ include_once 'db.php';
 <div id="signin_template">    
     <div id="signin_container_1">
         <div id="signin_left">
-            <img src="stock/sign_template_logo.png" id="sign_template_logo">
+            <!--<img src="stock/sign_template_logo.png" id="sign_template_logo">-->
             <h2 id="signin_head">Sign Up</h2>
             <form method="post" action="SignUp.php" id="signin_form">
             <?php if($_SESSION['step'] == 1) : ?>            
@@ -151,6 +158,6 @@ include_once 'db.php';
             </div>  
         </div>
     
-        <img src="stock/sign_template_photo.jpg" id="signin_right">
+        <img src="stock/sign_template_photo.png" id="signin_right">
     </div>
 </div>

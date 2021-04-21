@@ -58,11 +58,11 @@ $courses_no = $row['courses_no'];?>
 
 <body class="current-page" id="tests">
 	<div id="navbar">
-		<p id="navbar-simp">Project</p>
+		<p id="navbar-simp">Exam Management Portal</p>
 
 		<div id="navbar-profile">
 			<p id="navbar-arrow"><i id="navbar-arrow-control"></i></p>
-			<img src="stock/dp.jpeg" id="navbar-dp">
+			<img src="stock/student.jpg" id="navbar-dp"> 
 		</div>
 
 		<a href="tests-s.php" class="navbar-menus" id="navbar-tests"><p class="navbar-menus-text" id="navbar-tests-text">Tests</p><div class="navbar-menus-border" id="navbar-tests-border"></div></a>

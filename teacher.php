@@ -20,7 +20,7 @@ $_SESSION['name'] = $tname;
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
   <!-- Title bar -->
-  <title>Teacher Part &nbsp;|&nbsp; Project</title>
+  <title>Teacher Part &nbsp;|&nbsp; EMP</title>
   <link rel = "icon" type = "image/png" href = "stock/logo.png">
 
 
@@ -63,13 +63,13 @@ $_SESSION['name'] = $tname;
 
   <body class="current-page" id="home">
   <div id="navbar">
-    <p id="navbar-simp">Project</p>
+    <p id="navbar-simp">Exam Management System</p>
 
     <div id="navbar-profile">
       <p id="navbar-arrow"><i id="navbar-arrow-control"></i></p>
-      <img src="stock/dp.jpeg" id="navbar-dp">
+      <img src="stock/teacher.jpg" id="navbar-dp">   
     </div>
-    <div id="navbar-notify"><img src="stock/icon-notify.png" id="navbar-notify-icon"></div>
+
     <div class="navbar-menus dropdown" id="navbar-tests"><button class="navbar-menus-text dropbtn" id="navbar-tests-text">Tests</button>
     <div class="dropdown-content">
         <a href="teacher.php?q=1">Add Test</a>
@@ -94,7 +94,7 @@ $_SESSION['name'] = $tname;
   <div id="side-bar">   
     <div id="side-profile-bar">
           <form method="post" action="index.php">    
-    <div>
+    <div><a href="profile.php" class="side-bar-texts">Your profile</a>
         <button type="submit" class="side-bar-texts" name="signout">Sign Out</button>
     </div> 
 </form> 
@@ -106,9 +106,7 @@ $_SESSION['name'] = $tname;
         <a class="side-menu-bar-texts"href="teacher.php?q=4">Edit Test</a>
         <a class="side-menu-bar-texts"href="teacher.php?q=3">Remove Test</a>
     </div>
-    <div id="side-notify-bar">
-      <p class="side-notify-bar-texts">No unread Notifications</p>
-    </div>
+
   </div>
 <!--lost in case-->
 <?php

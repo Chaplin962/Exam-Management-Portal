@@ -213,6 +213,23 @@ tr:nth-child(odd) {
   		0 41.8px 33.4px rgba(0, 0, 0, 0.086),
   		0 100px 80px rgba(0, 0, 0, 0.12);  
 }
+.side-bar-texts {
+	color: #FFFFFF;
+	font-family: roboto, sans-serif; font-weight: 400; font-style: normal;
+	font-size: 0.9em;
+	letter-spacing: 0.1em;
+	text-decoration: none;
+	margin: 10px;
+	width: 300px;
+	display: inline-block;	
+    margin: 10px 20px 10px 30px;
+    background-color: #232323;
+    box-shadow: none;
+    border: none;
+    text-align: left;
+    padding: 0;
+    border-radius: 0;
+}
 #side-profile-bar, #side-notify-bar, #side-menu-bar {
 	margin: 20px;	
 	display: none;

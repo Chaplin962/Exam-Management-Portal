@@ -24,11 +24,17 @@ include_once 'db.php';
             $query = "Select * FROM user_sign WHERE email='$email' and password='$password'";
             $result = mysqli_query($con2, $query);
             if(mysqli_num_rows($result)==1) {
-                $_SESSION['email'] = $email;
+                $_SESSION['email'] = $email;                           
                 $row = mysqli_fetch_array($result);
-                $_SESSION['role'] = $row['role'];                
-                $_SESSION['sign']=1;
-                header("Location: index.php");  
+                if($row['signstatus'] == 0) {
+                    mysqli_query($con2,"UPDATE user_sign set signstatus=1 WHERE email='" . $email . "'");
+                    $_SESSION['role'] = $row['role'];                
+                    $_SESSION['sign']=1;
+                    header("Location: index.php");
+                }
+                else {
+                    array_push($errors, "Already signed in somewhere else.");
+                }
             }
             else {
                 array_push($errors, "Email and Password don't  match.");
@@ -67,7 +73,7 @@ include_once 'db.php';
 <div id="signin_template">    
     <div id="signin_container_1">
         <div id="signin_left">
-            <img src="stock/sign_template_logo.png" id="sign_template_logo">
+            <!--<img src="stock/sign_template_logo.png" id="sign_template_logo">-->
             <h2 id="signin_head">Sign In</h2>
             <form method="post" action="SignIn.php" id="signin_form">
                 <div>                    
@@ -85,10 +91,10 @@ include_once 'db.php';
                 <?php foreach($errors as $error) : ?>
                     <div class="signin_errors"><?php echo $error; ?></div>                    
                 <?php endforeach; ?>
-            </div>  
+            </div>
         </div>
     
-        <img src="stock/sign_template_photo.jpg" id="signin_right">
+        <img src="stock/sign_template_photo.png" id="signin_right">
     </div>
 </div>
 

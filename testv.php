@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
 	<!-- Title bar -->
-	<title>Trail test - 1 &nbsp;|&nbsp; Project</title>
+	<title>Trail test - 1 &nbsp;|&nbsp; EMP</title>
 	<link rel = "icon" type = "image/png" href = "#">
 
 	<!-- Style sheet -->
@@ -52,13 +52,13 @@ $_SESSION['name'] = $tname;
 
   <body class="current-page" id="tests">
   <div id="navbar">
-    <p id="navbar-simp">Project</p>
+    <p id="navbar-simp">Exam Management Portal</p>
 
     <div id="navbar-profile">
       <p id="navbar-arrow"><i id="navbar-arrow-control"></i></p>
-      <img src="stock/dp.jpeg" id="navbar-dp">
+      <img src="stock/teacher.jpg" id="navbar-dp">
     </div>
-    <div id="navbar-notify"><img src="stock/icon-notify.png" id="navbar-notify-icon"></div>
+
     <div class="navbar-menus dropdown" id="navbar-tests"><button class="navbar-menus-text dropbtn" id="navbar-tests-text">Tests</button>
     <div class="dropdown-content">
         <a href="teacher.php?q=1">Add Test</a>
@@ -96,9 +96,7 @@ $_SESSION['name'] = $tname;
         <a class="side-menu-bar-texts"href="teacher.php?q=4">Edit Test</a>
         <a class="side-menu-bar-texts"href="teacher.php?q=3">Remove Test</a>
     </div>
-    <div id="side-notify-bar">
-      <p class="side-notify-bar-texts">No unread Notifications</p>
-    </div>
+
   </div>
 
 		<?php
