@@ -198,14 +198,7 @@ include "navbar.php";
                 <td width="2%">:</td>
                 <td><input name="name" class="input_boxes" value = "<?php echo $name;?>" ></td>
                 <td><button type="submit" name="change_name" class="change_buttons">Change</button></td>
-              </tr>
-
-              <tr>
-                <th width="30%">Profile Picture	</th>
-                <td width="2%">:</td>
-                <td><input type="file" name="image" id="image" class="input_boxes"></td>
-                <td><input type="submit" name="upload" id="upload" value="Upload" class="change_buttons"></td>       
-              </tr>                  
+              </tr>              
 
               <tr>
                 <th width="30%">New Password	</th>
