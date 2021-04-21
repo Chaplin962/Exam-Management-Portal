@@ -25,10 +25,10 @@ $id=uniqid();
 
 if($name)
 {$subpt1="INSERT INTO quiz(quiz_id,created_for, name, start_time, end_time, created_by) VALUES ('$id','$course', '$name', '$start_time', '$end_time','$teacher_id')";
-if (mysqli_query($conn,$subpt1)){echo "New Test has been created successfully !";}
-else {echo "Error: " . $subpt1 . ":-" . mysqli_error($conn);}
+if (mysqli_query($con,$subpt1)){echo "New Test has been created successfully !";}
+else {echo "Error: " . $subpt1 . ":-" . mysqli_error($con);}
 header("location:teacher.php?q=1&step=2&eid=$id&n=$total&noc=$noc");
-mysqli_close($conn);}
+mysqli_close($con);}
 else{header("location:teacher.php?q=1");}
 }}
 
@@ -40,7 +40,7 @@ $total= $_POST['total'];
 $noc= $_POST['noc'];
 $id=@$_GET['eid'];
 header("location:teacher.php?q=1&step=2&eid=$id&n=$total&noc=$noc");
-mysqli_close($conn);}
+mysqli_close($con);}
 }
 
 //add question
@@ -62,8 +62,8 @@ if($qns!=NULL)
 	if($typ==0)
 {$subpt2="INSERT INTO question (question_id, text, quiz_id, type, pmarks, nmarks) VALUES  ('$qid','$qns','$eid',0,'$right','$wrong')";
 
-if (mysqli_query($conn,$subpt2)){echo "New question has been created successfully !";}
-else {echo "Error: " . $subpt2 . ":-" . mysqli_error($conn);}
+if (mysqli_query($con,$subpt2)){echo "New question has been created successfully !";}
+else {echo "Error: " . $subpt2 . ":-" . mysqli_error($con);}
 $a=$_POST['a'.$i];
 $isc = $_POST['isc'.$i];
 
@@ -77,15 +77,15 @@ echo'$isc['.$j.'+1]='.$isc[$j+1].'';
  	else if($isc[$j]=="n")
  	{$subpt3="INSERT INTO question_option(option_id,text, is_correct,question_id) VALUES ('$oaid','$a[$j]',0,'$qid')";}
 
-if (mysqli_query($conn,$subpt3)){echo "New options have been created successfully !";}
-else {echo "Error: " .$subpt3. ":-" . mysqli_error($conn);}
+if (mysqli_query($con,$subpt3)){echo "New options have been created successfully !";}
+else {echo "Error: " .$subpt3. ":-" . mysqli_error($con);}
  	}
  }
 }
 else if ($typ==1) {
 $subpt2="INSERT INTO question (question_id, text, quiz_id, type, pmarks, nmarks) VALUES  ('$qid','$qns','$eid',1,'$right','$wrong')";
-if (mysqli_query($conn,$subpt2)){echo "New question has been created successfully !";}
-else {echo "Error: " . $subpt2 . ":-" . mysqli_error($conn);}
+if (mysqli_query($con,$subpt2)){echo "New question has been created successfully !";}
+else {echo "Error: " . $subpt2 . ":-" . mysqli_error($con);}
 }
 
 }
@@ -100,9 +100,9 @@ $quiz_id=@$_GET['quiz_id'];
 $name=@$_GET['name'];
 echo'reached file';
 
-$r1 = mysqli_query($conn,"DELETE FROM question_option WHERE question_id='$qid'") or die('Error');
+$r1 = mysqli_query($con,"DELETE FROM question_option WHERE question_id='$qid'") or die('Error');
 
-$r2 = mysqli_query($conn,"DELETE FROM question WHERE question_id='$qid' ") or die('Error');
+$r2 = mysqli_query($con,"DELETE FROM question WHERE question_id='$qid' ") or die('Error');
 header("location:teacher.php?q=5&name=$name&quiz_id=$quiz_id");
 }
 
@@ -111,7 +111,7 @@ $qid=@$_GET['qid'];
 $quiz_id=@$_GET['quiz_id'];
 $name=@$_GET['name'];
 $op_id=@$_GET['op_id'];
-$r1 = mysqli_query($conn,"DELETE FROM question_option WHERE option_id='$op_id'") or die('Error');
+$r1 = mysqli_query($con,"DELETE FROM question_option WHERE option_id='$op_id'") or die('Error');
 
 header("location:teacher.php?q=5&name=$name&quiz_id=$quiz_id");
 }
@@ -119,13 +119,13 @@ header("location:teacher.php?q=5&name=$name&quiz_id=$quiz_id");
 if(@$_GET['q']=='remupd' && $_SESSION['role']=='Teacher') {
 include_once 'db.php';
 $quiz_id=@$_GET['quiz_id'];
-$result = mysqli_query($conn,"SELECT * FROM question WHERE quiz_id='$quiz_id' ") or die('Error');
+$result = mysqli_query($con,"SELECT * FROM question WHERE quiz_id='$quiz_id' ") or die('Error');
 while($row = mysqli_fetch_array($result)) {
 	$qid = $row['question_id'];
-$r1 = mysqli_query($conn,"DELETE FROM question_option WHERE question_id='$qid'") or die('Error');
+$r1 = mysqli_query($con,"DELETE FROM question_option WHERE question_id='$qid'") or die('Error');
 }
-$r2 = mysqli_query($conn,"DELETE FROM question WHERE quiz_id='$quiz_id' ") or die('Error');
-$r3 = mysqli_query($conn,"DELETE FROM quiz WHERE quiz_id='$quiz_id' ") or die('Error');
+$r2 = mysqli_query($con,"DELETE FROM question WHERE quiz_id='$quiz_id' ") or die('Error');
+$r3 = mysqli_query($con,"DELETE FROM quiz WHERE quiz_id='$quiz_id' ") or die('Error');
 header("location:teacher.php?q=3");}
 
 if(@$_GET['q']=='des' && $_SESSION['role']=='Teacher')
@@ -142,7 +142,6 @@ if(@$_GET['q']=='des' && $_SESSION['role']=='Teacher')
 			//echo"this is $student and marks scored is $total";
 			$quiz_id=$_POST['quiz_id'];
 			$marks_sub=$total;
-			$con = mysqli_connect("localhost","root", "", "quiz");
 			
 			//this is to count whether record exist or not
 			$check=mysqli_query($con,"SELECT student_id FROM student_marks where student_id='$student' and quiz_id='$quiz_id' ");
@@ -159,7 +158,7 @@ if(@$_GET['q']=='des' && $_SESSION['role']=='Teacher')
 		}
 
 		if(@$_GET['q']=='edmrks' && $_SESSION['role']=='Teacher')
-		{$con = mysqli_connect("localhost","root", "", "quiz");
+		{
 			$marks_sub=$_POST['marks_sub'];
 			$marks_obj=$_POST['marks_obj'];
 			$marks_subr=$_POST['marks_subr'];

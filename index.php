@@ -1,6 +1,5 @@
 <?php 
-
-    $db = mysqli_connect('localhost', 'root', '', 'simp1');    
+include_once 'db.php';
 
     session_start();    
 
@@ -16,55 +15,55 @@
     if(isset($_POST['addadmin'])) {
         $email = $_POST['email'];
         $query = "Select * FROM admin_list WHERE email='$email'";
-        $result = mysqli_query($db, $query);
+        $result = mysqli_query($con2, $query);
         if(mysqli_num_rows($result)==0) {
             $query = "INSERT INTO admin_list (email) VALUES ('$email')";
-            mysqli_query($db, $query);            
+            mysqli_query($con2, $query);            
         }       
     }
     if(isset($_POST['removeadmin'])) {        
         $email = $_POST['email'];
         $query = "Select * FROM admin_list WHERE email='$email'";
-        $result = mysqli_query($db, $query);
+        $result = mysqli_query($con2, $query);
         if(mysqli_num_rows($result)!=0) {
             $query = "DELETE FROM admin_list WHERE email = '$email'";            
-            mysqli_query($db, $query);            
+            mysqli_query($con2, $query);            
         }       
     }
     if(isset($_POST['addstudent'])) {
         $email = $_POST['email'];
         $query = "Select * FROM student_list WHERE email='$email'";
-        $result = mysqli_query($db, $query);
+        $result = mysqli_query($con2, $query);
         if(mysqli_num_rows($result)==0) {
             $query = "INSERT INTO student_list (email) VALUES ('$email')";
-            mysqli_query($db, $query);            
+            mysqli_query($con2, $query);            
         }       
     }
     if(isset($_POST['removestudent'])) {        
         $email = $_POST['email'];
         $query = "Select * FROM student_list WHERE email='$email'";
-        $result = mysqli_query($db, $query);
+        $result = mysqli_query($con2, $query);
         if(mysqli_num_rows($result)!=0) {
             $query = "DELETE FROM student_list WHERE email = '$email'";            
-            mysqli_query($db, $query);            
+            mysqli_query($con2, $query);            
         }       
     }
     if(isset($_POST['addteacher'])) {
         $email = $_POST['email'];
         $query = "Select * FROM teacher_list WHERE email='$email'";
-        $result = mysqli_query($db, $query);
+        $result = mysqli_query($con2, $query);
         if(mysqli_num_rows($result)==0) {
             $query = "INSERT INTO teacher_list (email) VALUES ('$email')";
-            mysqli_query($db, $query);            
+            mysqli_query($con2, $query);            
         }       
     }
     if(isset($_POST['removeteacher'])) {        
         $email = $_POST['email'];
         $query = "Select * FROM teacher_list WHERE email='$email'";
-        $result = mysqli_query($db, $query);
+        $result = mysqli_query($con2, $query);
         if(mysqli_num_rows($result)!=0) {
             $query = "DELETE FROM teacher_list WHERE email = '$email'";            
-            mysqli_query($db, $query);            
+            mysqli_query($con2, $query);            
         }       
     }
 ?>
@@ -83,7 +82,7 @@ include "navbar.php";
     $courses_array = array();
     $email = $_SESSION['email'];
     $query = "Select * FROM student_list WHERE email='$email'";
-    $result = mysqli_query($db, $query);
+    $result = mysqli_query($con2, $query);
     if(mysqli_num_rows($result)==1) {
         $row = mysqli_fetch_array($result);
         $courses_no = $row['courses_no'];
@@ -102,21 +101,21 @@ include "navbar.php";
     <h3>Admin List</h3>    
     <?php
         $query = "Select * FROM admin_list WHERE 1=1";
-        $result = mysqli_query($db, $query);
+        $result = mysqli_query($con2, $query);
         while($row = mysqli_fetch_array($result)) echo($row['email']."<br>");
     ?>
     <br><hr>
     <h3>Student List</h3>    
     <?php
         $query = "Select * FROM student_list WHERE 1=1";
-        $result = mysqli_query($db, $query);
+        $result = mysqli_query($con2, $query);
         while($row = mysqli_fetch_array($result)) echo($row['email']."<br>");
     ?>
     <br><hr>
     <h3>Teacher List</h3>    
     <?php
         $query = "Select * FROM teacher_list WHERE 1=1";
-        $result = mysqli_query($db, $query);
+        $result = mysqli_query($con2, $query);
         while($row = mysqli_fetch_array($result)) echo($row['email']."<br>");
     ?>
     <br><hr>

@@ -3,12 +3,11 @@
 <head>
   <?php
 session_start();
+include_once 'db.php';
 
-$db = mysqli_connect('localhost', 'root', '', 'simp1');
-$con= mysqli_connect('localhost', 'root', '', 'quiz');
 $email = $_SESSION['email'];
 $query = "SELECT * FROM student_list WHERE email='$email'";
-$result = mysqli_query($db, $query);
+$result = mysqli_query($con2, $query);
 $row = mysqli_fetch_assoc($result);
 $student_id = $row['student_id'];
 $_SESSION['STUDENT_ID'] = $student_id;
@@ -89,10 +88,6 @@ $courses_no = $row['courses_no'];?>
   </div>
 
 <?php
-                // the database name you need to change , the table name is leader_board
-
-                /* Connection Variable ("Servername","username","password","database") */
-                $con = mysqli_connect("localhost","root", "", "quiz");
 
                 //this variable is for getting quiz id
                 $qid=$_GET['quiz_id'];
@@ -114,7 +109,6 @@ $courses_no = $row['courses_no'];?>
        <tr>";
                     while ($row = mysqli_fetch_array($result)) {
 
-  $con2=mysqli_connect("localhost","root", "", "simp1");
        $std_id=$row['student_id'];
        $stuff=mysqli_query($con2, "SELECT * FROM student_list where student_id='$std_id'");
        $student_name=mysqli_fetch_assoc($stuff);

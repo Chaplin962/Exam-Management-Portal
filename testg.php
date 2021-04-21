@@ -36,27 +36,21 @@
 	<script type="text/javascript" src="z-effect.js"></script>
 </head>
 	<?php
+include_once 'db.php';
 session_start();
 
-$db = mysqli_connect('localhost', 'root', '', 'simp1');
-$con= mysqli_connect('localhost', 'root', '', 'quiz');
 $email = $_SESSION['email'];
 $query = "SELECT * FROM student_list WHERE email='$email'";
-$result = mysqli_query($db, $query);
+$result = mysqli_query($con2, $query);
 $row = mysqli_fetch_assoc($result);
 $student_id = $row['student_id'];
 $_SESSION['STUDENT_ID'] = $student_id;
 $name = $row['name'];
 $_SESSION['name'] = $name;
 $courses_no = $row['courses_no'];?>
-<?php
-$con = mysqli_connect("localhost", "root", "", "quiz");
-
-?>
 
 <?php
     $quiz=$_GET['quiz_id'];
-    $con = mysqli_connect("localhost","root", "", "quiz");
     $check=mysqli_query($con,"SELECT end_time FROM quiz where quiz_id='$quiz' ");
     $row=mysqli_fetch_row($check);
     $timer=$row[0];

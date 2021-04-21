@@ -1,18 +1,17 @@
 <?php
-
+include_once 'db.php';
     session_start();
 
     if(isset($_SESSION['sign'])) {
         header("Location: index.php");
     }
 
-    $db = mysqli_connect('localhost', 'root', '', 'simp1');
     $email = "";
     $errors = array();    
 
     if(isset($_POST['signin'])) {
-        $email = mysqli_real_escape_string($db, $_POST['email']);
-        $password = mysqli_real_escape_string($db, $_POST['password']);
+        $email = mysqli_real_escape_string($con2, $_POST['email']);
+        $password = mysqli_real_escape_string($con2, $_POST['password']);
 
         if(empty($email)) {
             array_push($errors, "Email is required.");
@@ -23,7 +22,7 @@
         if(count($errors) == 0) {
             $password = md5($password);
             $query = "Select * FROM user_sign WHERE email='$email' and password='$password'";
-            $result = mysqli_query($db, $query);
+            $result = mysqli_query($con2, $query);
             if(mysqli_num_rows($result)==1) {
                 $_SESSION['email'] = $email;
                 $row = mysqli_fetch_array($result);

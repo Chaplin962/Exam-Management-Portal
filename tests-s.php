@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<?php
+<?php
+include_once 'db.php';
 session_start();
 
-$db = mysqli_connect('localhost', 'root', '', 'simp1');
-$con= mysqli_connect('localhost', 'root', '', 'quiz');
 $email = $_SESSION['email'];
 $query = "SELECT * FROM student_list WHERE email='$email'";
-$result = mysqli_query($db, $query);
+$result = mysqli_query($con2, $query);
 $row = mysqli_fetch_assoc($result);
 $student_id = $row['student_id'];
 $_SESSION['STUDENT_ID'] = $student_id;
@@ -95,7 +94,7 @@ $date1 = date('Y-m-d H:i:s');
 echo'<div id="tests-main-container">';
 
 $query = "SELECT * FROM student_list WHERE email='$email'";
-$result = mysqli_query($db, $query);
+$result = mysqli_query($con2, $query);
 $row = mysqli_fetch_assoc($result);
 
 $a = array();
@@ -137,7 +136,7 @@ echo '
       $name = $row['name'];
       $qid = $row['quiz_id'];
 
-    $result3 =mysqli_query($conn,"SELECT * FROM student_response_des where quiz_id = '$qid' and is_corrected=0")or die('Error');
+    $result3 =mysqli_query($con,"SELECT * FROM student_response_des where quiz_id = '$qid' and is_corrected=0")or die('Error');
 
     if(!mysqli_num_rows($result3)){
     echo' <a href="testg.php?quiz_id='.$qid.'" class="tests-cards" id="tests-card'.$d.'"><p class="tests-cards-text" id="tests-card'.$d++.'-text">'.$name.'</p></a>';

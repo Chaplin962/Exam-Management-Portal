@@ -6,28 +6,27 @@
         header("Location: index.php");
     }
 
-    $db = mysqli_connect('localhost', 'root', '', 'simp1');
     $email = "";    
     $errors = array();
     $_SESSION['step']=1;
 
     if(isset($_POST['sendotp'])) {
-        $email = mysqli_real_escape_string($db, $_POST['email']);              
+        $email = mysqli_real_escape_string($con2, $_POST['email']);              
 
         if(empty($email)) {
             array_push($errors, "Email is required.");
         }        
         if(count($errors) == 0) {
             $query = "Select * FROM admin_list WHERE email='$email'";
-            $result1 = mysqli_query($db, $query);
+            $result1 = mysqli_query($con2, $query);
             if(mysqli_num_rows($result1)==1) $_SESSION['role'] = 'Admin';
 
             $query = "Select * FROM student_list WHERE email='$email'";
-            $result2 = mysqli_query($db, $query);
+            $result2 = mysqli_query($con2, $query);
             if(mysqli_num_rows($result2)==1) $_SESSION['role'] = 'Student';
 
             $query = "Select * FROM teacher_list WHERE email='$email'";
-            $result3 = mysqli_query($db, $query);
+            $result3 = mysqli_query($con2, $query);
             if(mysqli_num_rows($result3)==1) $_SESSION['role'] = 'Teacher';
 
             if( isset($_SESSION['role']) ) {
@@ -46,7 +45,7 @@
     if(isset($_POST['verifyotp'])) {
         $_SESSION['step']=2;
         $email = $_SESSION['email'];
-        $otp = mysqli_real_escape_string($db, $_POST['otp']);
+        $otp = mysqli_real_escape_string($con2, $_POST['otp']);
         //$otp = strval($otp);        
 
         if($otp != $_SESSION['otp']) {
@@ -59,8 +58,8 @@
 
     if(isset($_POST['signup'])) {
         $_SESSION['step']=3;
-        $password = mysqli_real_escape_string($db, $_POST['password']);
-        $confirmpassword = mysqli_real_escape_string($db, $_POST['confirmpassword']);     
+        $password = mysqli_real_escape_string($con2, $_POST['password']);
+        $confirmpassword = mysqli_real_escape_string($con2, $_POST['confirmpassword']);     
 
         if(empty($password)) {
             array_push($errors, "Password is required.");
@@ -74,7 +73,7 @@
             $role = $_SESSION['role'];
             $signstatus = 1;            
             $query = "INSERT INTO user_sign (email, password, role, signstatus) VALUES ('$email', '$password', '$role', '$signstatus')";
-            mysqli_query($db, $query);
+            mysqli_query($con2, $query);
             $_SESSION['sign']=1;
             header("Location: index.php");                        
         }

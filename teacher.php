@@ -2,13 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <?php
+  include_once 'db.php';
 session_start();
-
-$db = mysqli_connect('localhost', 'root', '', 'simp1');
 
 $email = $_SESSION['email'];
 $query = "SELECT * FROM teacher_list WHERE email='$email'";
-$result = mysqli_query($db, $query);
+$result = mysqli_query($con2, $query);
 $row = mysqli_fetch_assoc($result);
 $teacher_id = $row['id'];//session variable here
 $_SESSION['id'] = $teacher_id;
@@ -317,10 +316,9 @@ echo '
 <!--remove quiz page-->
 <?php
 if(@$_GET['q']==3){
-  include_once 'db.php';
 date_default_timezone_set('Asia/Kolkata');
 $date = date('Y-m-d H:i:s');
-$result = mysqli_query($conn,"SELECT * FROM quiz where created_by = '$teacher_id' and start_time > '$date' order by start_time asc") or die('Error');
+$result = mysqli_query($con,"SELECT * FROM quiz where created_by = '$teacher_id' and start_time > '$date' order by start_time asc") or die('Error');
 echo  '<div id="test-div"></div>
 <table class="center">
 <tr>
@@ -348,10 +346,9 @@ echo '</table></div></div>';
 <!--edit test page-->
 <?php
 if(@$_GET['q']==4) {
-  include_once 'db.php';
 date_default_timezone_set('Asia/Kolkata');
 $date = date('Y-m-d H:i:s');
-$result = mysqli_query($conn,"SELECT * FROM quiz where created_by = '$teacher_id' and start_time > '$date' order by start_time asc") or die('Error');
+$result = mysqli_query($con,"SELECT * FROM quiz where created_by = '$teacher_id' and start_time > '$date' order by start_time asc") or die('Error');
 echo  '<div id="test-div"></div>
 <table class="center">
 <tr>
@@ -384,11 +381,10 @@ echo '</table></div></div>';
 <!--remove question-->
 <?php
 if(@$_GET['q']==5) {
-  include_once 'db.php';
   $quiz_id=@$_GET['quiz_id'];
   $name=@$_GET['name'];
 echo'<span class="title1" style="margin-left:40%;font-size:30px;"><b>Remove Questions from '.@$_GET['name'].'</b></span><br/><br/>';
-$result = mysqli_query($conn,"SELECT * FROM question where quiz_id='$quiz_id'") or die('Error');
+$result = mysqli_query($con,"SELECT * FROM question where quiz_id='$quiz_id'") or die('Error');
 
 echo  '<table class="center">
 <tr>
@@ -413,8 +409,6 @@ echo '</table></div></div>';
 <?php
 if(@$_GET['q']==6)
 {   $quiz_id = @$_GET['quiz_id'];
-    $con = mysqli_connect("localhost", "root", "", "quiz");
-    $con2 = mysqli_connect("localhost", "root", "", "simp1");
     $sql = "SELECT * FROM student_marks WHERE quiz_id='$quiz_id'";
     $result = mysqli_query($con,$sql);
 
@@ -452,11 +446,6 @@ echo'<div id="test-div"></div><table style="text-align:center;margin:0 auto;widt
 <!--rank_list page-->
 <?php
 if(@$_GET['q']==7) {
-                // the database name you need to change , the table name is leader_board
-
-                /* Connection Variable ("Servername","username","password","database") */
-                $con = mysqli_connect("localhost","root", "", "quiz");
-
                 //this variable is for getting quiz id
                 $qid=$_GET['qid'];
                 /* Mysqli query to fetch rows in descending order of marks */
@@ -482,7 +471,6 @@ if(@$_GET['q']==7) {
             </tr>
        <tr>";
   while ($row = mysqli_fetch_array($result)) {
-  $con2=mysqli_connect("localhost","root", "", "simp1");
        $std_id=$row['student_id'];
        $stuff=mysqli_query($con2, "SELECT * FROM student_list where student_id='$std_id'");
        $student_name=mysqli_fetch_assoc($stuff);
@@ -530,10 +518,9 @@ if(@$_GET['q']==7) {
             ?>
 <!--test-t page-->
 <?php if(@$_GET['q']==8) {
-include_once 'db.php';
 date_default_timezone_set('Asia/Kolkata');
 $date = date('Y-m-d H:i:s');
-$result = mysqli_query($conn,"SELECT * FROM quiz where created_by = '$teacher_id' and start_time < '$date' and end_time > '$date' order by start_time asc") or die('Error');
+$result = mysqli_query($con,"SELECT * FROM quiz where created_by = '$teacher_id' and start_time < '$date' and end_time > '$date' order by start_time asc") or die('Error');
 echo '
   <div id="tests-main-container">
     <div class="tests-containers tests-heads"><p class="tests-heads-text">Present Tests</p></div>   
@@ -548,7 +535,7 @@ echo '
 
     <div class="tests-containers tests-heads"><p class="tests-heads-text">Upcoming Tests</p></div>    
     <div class="tests-containers">';
-    $result1 = mysqli_query($conn,"SELECT * FROM quiz where created_by = '$teacher_id' and start_time > '$date' order by start_time asc") or die('Error');
+    $result1 = mysqli_query($con,"SELECT * FROM quiz where created_by = '$teacher_id' and start_time > '$date' order by start_time asc") or die('Error');
     while($row = mysqli_fetch_array($result1)){
       $name = $row['name'];
       $quiz_id = $row['quiz_id'];
@@ -558,7 +545,7 @@ echo '
 
     <div class="tests-containers tests-heads"><p class="tests-heads-text">Past Tests</p></div>    
     <div class="tests-containers">';
-    $result2 = mysqli_query($conn,"SELECT * FROM quiz where created_by = '$teacher_id' and start_time < '$date' and end_time < '$date' order by start_time asc") or die('Error');
+    $result2 = mysqli_query($con,"SELECT * FROM quiz where created_by = '$teacher_id' and start_time < '$date' and end_time < '$date' order by start_time asc") or die('Error');
     while($row = mysqli_fetch_array($result2)){
       $name = $row['name'];
       $qid = $row['quiz_id'];
@@ -586,8 +573,6 @@ echo'<!--this is the starting of page(after navbar) -->
             <td  width="15%">NMarks</td>
             <td  width="15%">Marks</td>
     </tr>';   
-  
-         $con = mysqli_connect("localhost","root", "", "quiz");
          
          // this varible will be used to get quiz id and student id
 
