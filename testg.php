@@ -36,7 +36,7 @@
 	<script type="text/javascript" src="z-effect.js"></script>
 </head>
 	<?php
-include_once 'db.php';
+	include_once 'db.php';
 session_start();
 
 $email = $_SESSION['email'];
@@ -83,7 +83,7 @@ $courses_no = $row['courses_no'];?>
 	<div id="side-bar">
 		<div id="side-profile-bar">
 			<a href="profile.php" class="side-profile-bar-texts">Your profile</a>
-			 <form method="post" action="index.php">    
+			 <form method="post" action="index.php">
 			<button type="submit" class="side-bar-texts" name="signout">Sign Out</button></form>
 		</div>
 		<div id="side-menu-bar">
@@ -122,10 +122,11 @@ $courses_no = $row['courses_no'];?>
 					<p class="trailtest1-nos">
 						Question - <?php echo $i1?>
 					</p>
+					<div class="tooltip"><img style="margin-top: 15px;margin-left: 10px; height: 17px; width:17px;" src="stock/info.jpg">
+	  				<span class="tooltiptext"><?php echo'Correct : + '.$q['pmarks'].' Wrong : '.-$q['nmarks'].'';?></span>
+					</div>
 				</div>
-				<div class="tooltip"><img style="margin-top: 15px;margin-left: 10px; height: 17px; width:17px;" src="stock/info.jpg">
-  				<span class="tooltiptext"><?php echo'Positive Marks: '.$q['pmarks'].' Negative Marks: '.$q['nmarks'].'';?></span>
-				</div>
+
 				<br><br><br>
 				<div class="trailtest1-bodys"><p class="trailtest1-bodys-texts">
 						<?php echo $q['text'] ?>
@@ -152,7 +153,7 @@ $courses_no = $row['courses_no'];?>
 							if($q['type']==1&&$time==1):
 					?>
 						<div class="trailtest1-anss-ops">
-							<textarea id="descriptive-box" name="write_list[]" placeholder="Enter your answer here"rows="10" cols="90"></textarea> 
+							<textarea id="descriptive-box" name="write_list[]" placeholder="Enter your answer here"rows="8" cols="100"></textarea>
 							<input type="hidden" name="write_question_list[]" value="<?php echo $q['question_id'] ?>"/>
 						</div>
 					<?php
@@ -172,13 +173,13 @@ $courses_no = $row['courses_no'];?>
 						<div class="correct_answer">
 													<p>Correct Answer :
 														<?php
-														
+
 															$i2=0;
 															while($corans=mysqli_fetch_assoc($cares)){
 																if($i2>0){echo ', ';}
 																echo $corans['text'];
 																$i2=1;
-																
+
 															}
 														?>
 													</p>
@@ -190,9 +191,11 @@ $courses_no = $row['courses_no'];?>
 										echo'<div><a id="trailtest1-sub1" href="rank_list.php?quiz_id='.$_GET['quiz_id'].'">RANKINGS</a></div>';
 									}
 									if($time == 1):
-					?><div><p><h2 style="color:red;font-family:roboto;margin-top: 5%;text-align: center;">WARNING : PRESSING SUBMIT BUTTON ONCE WILL PERMANENTLY SUBMIT ALL YOUR RESPONSES.<h2></p></div>
-						<input type="submit" id="trailtest1-sub" value="Submit" name="submit"/>
-						
+					?>
+					<input type="submit" id="trailtest1-sub" value="Submit" name="submit"/>
+					<div><p><h2 class="warning">WARNING : Pressing Submit Button Once Will Permanently Submit Your Responses.<h2></p></div>
+
+
 					</form>
 				<?php
 					endif;
@@ -278,7 +281,7 @@ $courses_no = $row['courses_no'];?>
 </body>
     <script>
         var simp = '<?php echo $timer; ?>';
-        var simple=new Date(simp);      
+        var simple=new Date(simp);
         var x = setInterval(function() {
         var now = new Date().getTime();
         var distance = simple - now;

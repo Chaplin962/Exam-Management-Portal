@@ -61,7 +61,7 @@ $_SESSION['name'] = $tname;
   <link rel="stylesheet" type="text/css" href="z-style.css" />
 </head>
 
-  <body class="current-page" id="tests">
+  <body class="current-page" id="home">
   <div id="navbar">
     <p id="navbar-simp">Project</p>
 
