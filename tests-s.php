@@ -86,7 +86,6 @@ $courses_no = $row['courses_no'];?>
 	</div>
 
 	<?php 
-include_once 'db.php';
 date_default_timezone_set('Asia/Kolkata');
 $date1 = date('Y-m-d H:i:s');
 echo'<div id="tests-main-container">';
