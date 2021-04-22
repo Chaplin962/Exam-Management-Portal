@@ -2,11 +2,9 @@
 include_once 'db.php';
 session_start();
 
-$db = mysqli_connect('localhost', 'root', '', 'simp1');
-
 $email = $_SESSION['email'];
 $query = "SELECT * FROM teacher_list WHERE email='$email'";
-$result = mysqli_query($db, $query);
+$result = mysqli_query($con2, $query);
 $row = mysqli_fetch_assoc($result);
 $teacher_id = $row['id'];//session variable here
 $_SESSION['id'] = $teacher_id;
