@@ -193,7 +193,7 @@ echo '<script>alert("Do not add options for descriptive questions!")</script>';
 echo ' 
 <div class="row">
 <span class="title1" style="margin-left:40%;font-size:30px;"><b>Enter Question Details</b></span><br /><br />
- <div class="col-md-3"></div><div class="col-md-6"><form class="form-horizontal title1" name="form" action="update.php?q=addqns&n='.@$_GET['n'].'&eid='.@$_GET['eid'].' &noc='.@$_GET['noc'].'"  method="POST">
+<div class="col-md-3"></div><div class="col-md-6"><form class="form-horizontal title1" name="form" action="update.php?q=addqns&n='.@$_GET['n'].'&eid='.@$_GET['eid'].'&noc='.@$_GET['noc'].'"  method="POST">
 <fieldset>
 ';
  

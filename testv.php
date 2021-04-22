@@ -100,7 +100,6 @@ $_SESSION['name'] = $tname;
   </div>
 
 		<?php
-
 		$store_id = $_GET['quiz_id'];
 		date_default_timezone_set('Asia/Kolkata');
 		$today = date("Y-m-d H:i:s");

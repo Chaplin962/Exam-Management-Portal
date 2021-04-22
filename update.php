@@ -58,7 +58,7 @@ $typ=@$_POST['typ'.$i];
 if($qns!=NULL)
 {$qid=uniqid();
 	if($typ==0)
-{$subpt2="INSERT INTO question (question_id, text, quiz_id, type, pmarks, nmarks) VALUES  ('$qid','$qns','$eid',0,'$right','$wrong')";
+{$subpt2="INSERT INTO question(question_id,text,quiz_id,type,pmarks,nmarks)VALUES('$qid','$qns','$eid',0,'$right','$wrong')";
 
 if (mysqli_query($con,$subpt2)){echo "New question has been created successfully !";}
 else {echo "Error: " . $subpt2 . ":-" . mysqli_error($con);}
@@ -81,7 +81,7 @@ else {echo "Error: " .$subpt3. ":-" . mysqli_error($con);}
  }
 }
 else if ($typ==1) {
-$subpt2="INSERT INTO question (question_id, text, quiz_id, type, pmarks, nmarks) VALUES  ('$qid','$qns','$eid',1,'$right','$wrong')";
+$subpt2="INSERT INTO question(question_id,text,quiz_id,type,pmarks,nmarks)VALUES('$qid','$qns','$eid',1,'$right','$wrong')";
 if (mysqli_query($con,$subpt2)){echo "New question has been created successfully !";}
 else {echo "Error: " . $subpt2 . ":-" . mysqli_error($con);}
 }
