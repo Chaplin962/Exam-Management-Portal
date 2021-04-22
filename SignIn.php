@@ -73,7 +73,7 @@ include_once 'db.php';
 <div id="signin_template">    
     <div id="signin_container_1">
         <div id="signin_left">
-            <!--<img src="stock/sign_template_logo.png" id="sign_template_logo">-->
+            <img src="stock/sign_template_logo.gif" id="sign_template_logo">
             <h2 id="signin_head">Sign In</h2>
             <form method="post" action="SignIn.php" id="signin_form">
                 <div>                    
@@ -94,7 +94,7 @@ include_once 'db.php';
             </div>
         </div>
     
-        <img src="stock/sign_template_photo.png" id="signin_right">
+        <img src="stock/sign_template_photo.gif" id="signin_right">
     </div>
 </div>
 

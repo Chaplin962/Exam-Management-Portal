@@ -21,6 +21,7 @@ body {
   	transform: translateY(-50%);
 }
 #signin_left {
+    background-color: #E7E7E7;
     float: left;
     height: 100%;
     width: 50%;
@@ -40,7 +41,7 @@ body {
     font-style: normal;
     margin: 10px;
     border: 0;
-    background-color: rgb(231, 231, 231);
+    background-color: white;
     padding: 8px 15px 8px 15px;
     width: 90%;
     border-radius: 0;

@@ -63,7 +63,7 @@ $_SESSION['name'] = $tname;
 
   <body class="current-page" id="home">
   <div id="navbar">
-    <p id="navbar-simp">Exam Management System</p>
+    <p id="navbar-simp">Examination Management System</p>
 
     <div id="navbar-profile">
       <p id="navbar-arrow"><i id="navbar-arrow-control"></i></p>

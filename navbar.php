@@ -23,7 +23,7 @@
 
 <div id="navbar">
     <img src="stock/logo.png" id="navbar-logo">
-    <p id="navbar-simp">Exam Management Portal</p>
+    <p id="navbar-simp">Examination Management Portal</p>
     <div id="navbar-profile">
 		<p id="navbar-arrow"><i id="navbar-arrow-control"></i></p>
         <?php if($_SESSION['role']=='Student') : ?>

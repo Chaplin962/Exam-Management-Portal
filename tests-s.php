@@ -52,7 +52,7 @@ $courses_no = $row['courses_no'];?>
 
 <body class="current-page" id="tests">
 	<div id="navbar">
-		<p id="navbar-simp">Exam Management Portal</p>
+		<p id="navbar-simp">Examination Management Portal</p>
 
 		<div id="navbar-profile">
 			<p id="navbar-arrow"><i id="navbar-arrow-control"></i></p>

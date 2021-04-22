@@ -35,7 +35,7 @@ include_once 'db.php';
                 $result = mysqli_query($con2, $query);
                 if(mysqli_num_rows($result)==0) {
                     $otp = rand(100000, 999999);
-                    mail($email, "Exam Management Portal One Time Password", "The OTP for EMP Sign up is : ".$otp, "");                
+                    mail($email, "Examination Management Portal One Time Password", "The OTP for EMP Sign up is : ".$otp, "");                
                     $_SESSION['otp']=$otp;
                     $_SESSION['step']=2;
                 }
@@ -117,7 +117,7 @@ include_once 'db.php';
 <div id="signin_template">    
     <div id="signin_container_1">
         <div id="signin_left">
-            <!--<img src="stock/sign_template_logo.png" id="sign_template_logo">-->
+            <img src="stock/sign_template_logo.gif" id="sign_template_logo">
             <h2 id="signin_head">Sign Up</h2>
             <form method="post" action="SignUp.php" id="signin_form">
             <?php if($_SESSION['step'] == 1) : ?>            
@@ -158,6 +158,6 @@ include_once 'db.php';
             </div>  
         </div>
     
-        <img src="stock/sign_template_photo.png" id="signin_right">
+        <img src="stock/sign_template_photo.gif" id="signin_right">
     </div>
 </div>
