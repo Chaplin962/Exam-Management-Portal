@@ -1,6 +1,6 @@
 <?php
     //Offline Development
-    /*$servername='localhost';
+    $servername='localhost';
     $username='root';
     $password='';
     $dbname = 'quiz';
@@ -10,10 +10,10 @@
     $username2='root';
     $password2='';
     $dbname2 = 'simp1';
-    $con2=mysqli_connect($servername2,$username2,$password2,$dbname2);*/
+    $con2=mysqli_connect($servername2,$username2,$password2,$dbname2);
 
     //remote server deployment
-    $servername='remotemysql.com';
+    /*$servername='remotemysql.com';
     $username='Jo8QJ7efP6';
     $password='bCqMAklGyz';
     $dbname = 'Jo8QJ7efP6';
@@ -23,7 +23,7 @@
     $username2='Jo8QJ7efP6';
     $password2='bCqMAklGyz';
     $dbname2 = 'Jo8QJ7efP6';
-    $con2=mysqli_connect($servername2,$username2,$password2,$dbname2);
+    $con2=mysqli_connect($servername2,$username2,$password2,$dbname2);*/
 
  if(!$con){die('Could not Connect MySql Server :' .mysql_error());}
  if(!$con2){die('Could not Connect MySql Server simp1:' .mysql_error());}

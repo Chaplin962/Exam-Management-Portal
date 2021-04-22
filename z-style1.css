@@ -477,23 +477,22 @@ body { overflow-y: scroll; }
   position: relative;
 	cursor: pointer;
 }
-#trailtest1-sub1 {
-	width: 250px;
-	height: 75px;
-	display: inline-block;
-	background-color: #2B821D;
-	font-family: roboto, sans-serif; font-weight: 400; font-style: normal;
-	letter-spacing: 0.12em;
-	font-size: 1.25em;
-	color: #FFFFFF;
-	border-radius: 5px;
-	text-align: center;
-  position: absolute;
-	margin-left:55px;
-	margin-top:30px;
-	cursor: pointer;
-	text-decoration: none;
+#trailtest1-sub1{
+	background-color: green;
+	font-family:roboto;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+	border-radius:4px;
+	margin-top:20px;
 }
+
+#rank-space{
+	text-align:center;
+}
+
 
 #trailtest1-sub1:focus{
 	outline:0 !important;
@@ -542,8 +541,8 @@ body { overflow-y: scroll; }
   border: solid 1px;
   text-align: center;
   background-color: #beffb4;
-    margin: 10px;
-		margin-left:25px;
+	margin-left:15%;
+	margin-right:10%;
     padding: 10px;
 }
 .your_answer {
@@ -551,8 +550,8 @@ body { overflow-y: scroll; }
   border: solid 1px;
   text-align: center;
   background-color: white;
-    margin: 10px;
-		margin-left:25px;
+		margin-left:15%;
+		margin-right:10%;
     padding: 10px;
 }
 
@@ -646,4 +645,29 @@ body { overflow-y: scroll; }
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+#timer{
+	display:inline-block;
+	position:relative;
+	font-size:1.4em;
+}
+#demo{
+		display:inline-block;
+	background-color: green;
+	font-family:roboto;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+	border-radius:4px;
+}
+.timer-div{
+	font-family: roboto;
+	font-size: 1.6em;
+	font-weight: 700;
+	float:right;
+	margin-right:10%;
+	margin-top:30px;
+	margin-bottom:-10px;
 }

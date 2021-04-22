@@ -112,7 +112,7 @@ $courses_no = $row['courses_no'];?>
 		if($today < $start_date ){$time = 2;}
 		if(($submit['num4']==0 && $time==1)|| $time==0):
 		$qres=mysqli_query($con, ("SELECT * FROM question WHERE quiz_id='".$store_id."' ORDER BY rand()" ));
-		$i1=1;if($time!=0){echo'Timer: <p id="demo"></p>';}
+		$i1=1;if($time!=0){echo'<div class="timer-div"><p id="timer">Timer : </p> <p id="demo"></p></div>';}
 		while($q=mysqli_fetch_assoc($qres)):
 		$cares=mysqli_query($con, ("SELECT text FROM question_option WHERE question_id='".$q['question_id']."' AND is_correct='1'"));
 		?>
@@ -162,11 +162,18 @@ $courses_no = $row['courses_no'];?>
                         $wrote_res=mysqli_query($con,$wrote_q);
                         $wrote=mysqli_fetch_assoc($wrote_res);
                         if($q['type']==1 && $time==0):
+							if(mysqli_fetch_assoc($wrote_res)):
                     ?>
                         <div class="your_answer">
                             <p>Your Answer : <?php echo $wrote['answer'] ;?></p>
                         </div>
                     <?php
+					else:?>
+					<div class="your_answer">
+                            <p>No Answer Submitted</p>
+                        </div>
+					<?php
+					endif;
                 endif;
 						if($time == 0&&$q['type']==0):
 					?>
@@ -188,7 +195,7 @@ $courses_no = $row['courses_no'];?>
 									++$i1;
 									endwhile;
 									if($time==0){
-										echo'<div><a id="trailtest1-sub1" href="rank_list.php?quiz_id='.$_GET['quiz_id'].'">RANKINGS</a></div>';
+										echo'<div id="rank-space"><a id="trailtest1-sub1" href="rank_list.php?quiz_id='.$_GET['quiz_id'].'">RANKINGS</a></div>';
 									}
 									if($time == 1):
 					?>

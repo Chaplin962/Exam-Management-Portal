@@ -178,7 +178,7 @@ $qid=$_GET['quiz_id'];
     echo'<div><a id="trailtest1-sub1" href="teacher.php?q=7&qid='.$_GET['quiz_id'].'">RANKINGS</a></div>';
         }
         else{
-          echo'<div><a id="trailtest1-sub1" href="teacher.php?q=6&quiz_id='.$_GET['quiz_id'].'">AWARD MARKS</a></div>';
+          echo'<div id="rank-space"><a id="trailtest1-sub1" href="teacher.php?q=6&quiz_id='.$_GET['quiz_id'].'">AWARD MARKS</a></div>';
         }
     }
 					echo'</form>';
