@@ -104,16 +104,6 @@ $r2 = mysqli_query($con,"DELETE FROM question WHERE question_id='$qid' ") or die
 header("location:teacher.php?q=5&name=$name&quiz_id=$quiz_id");
 }
 
-if(@$_GET['q']=='opdel' && $_SESSION['role']=='Teacher') {
-$qid=@$_GET['qid'];
-$quiz_id=@$_GET['quiz_id'];
-$name=@$_GET['name'];
-$op_id=@$_GET['op_id'];
-$r1 = mysqli_query($con,"DELETE FROM question_option WHERE option_id='$op_id'") or die('Error');
-
-header("location:teacher.php?q=5&name=$name&quiz_id=$quiz_id");
-}
-
 if(@$_GET['q']=='remupd' && $_SESSION['role']=='Teacher') {
 include_once 'db.php';
 $quiz_id=@$_GET['quiz_id'];
