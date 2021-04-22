@@ -37,8 +37,10 @@ include_once 'db.php';
             $query = "Select * FROM admin_list WHERE email='$email'";
             $result = mysqli_query($con2, $query);
             if(mysqli_num_rows($result)!=0) {
-                $query = "DELETE FROM admin_list WHERE email = '$email'";            
-                mysqli_query($con2, $query);            
+                $query = "DELETE FROM admin_list WHERE email = '$email'";    
+                $query2 = "DELETE FROM user_sign WHERE email = '$email'";         
+                mysqli_query($con2, $query);
+                mysqli_query($con2, $query2);            
             }
         }      
     }
@@ -61,8 +63,10 @@ include_once 'db.php';
             $query = "Select * FROM student_list WHERE email='$email'";
             $result = mysqli_query($con2, $query);
             if(mysqli_num_rows($result)!=0) {
-                $query = "DELETE FROM student_list WHERE email = '$email'";            
-                mysqli_query($con2, $query);            
+                $query = "DELETE FROM student_list WHERE email = '$email'";
+                $query2 = "DELETE FROM user_sign WHERE email = '$email'";       
+                mysqli_query($con2, $query);
+                mysqli_query($con2, $query2);            
             }
         }
         else if($student_id!="") {
@@ -92,8 +96,10 @@ include_once 'db.php';
             $query = "Select * FROM teacher_list WHERE email='$email'";
             $result = mysqli_query($con2, $query);
             if(mysqli_num_rows($result)!=0) {
-                $query = "DELETE FROM teacher_list WHERE email = '$email'";            
-                mysqli_query($con2, $query);            
+                $query = "DELETE FROM teacher_list WHERE email = '$email'";  
+                $query2 = "DELETE FROM user_sign WHERE email = '$email'";           
+                mysqli_query($con2, $query);           
+                mysqli_query($con2, $query2);       
             }
         }   
     }
