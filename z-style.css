@@ -52,6 +52,9 @@ tr:nth-child(odd) {
   	transform: translateY(-50%);
   	position: relative;
 }
+#rank-space{
+	text-align:center;
+}
 #navbar-logo {
 	height: 40px;
 	margin-left: 35px;	 	
@@ -493,7 +496,7 @@ tr:nth-child(odd) {
 }
 .trailtest1-anss-ops {
 	margin: 8px;
-	margin-left: 20px;
+	margin-left: 15%;
 }
 .trailtest1-anss-ops-texts { font-size: 1em; }
 

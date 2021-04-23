@@ -555,14 +555,17 @@ if(@$_GET['q']==9) {
 
       $std_id=$_GET['stu_id'];
       $quiz=$_GET['quiz_id'];
-     echo'<h1>REG NO: '.$std_id.'</h1>';
-     echo'<h1>Answer Sheet for '.$quiz.'</h1>';
+      $quizname=mysqli_query($con,"SELECT * FROM quiz WHERE quiz_id='$quiz'");
+      $quizname2=mysqli_fetch_array($quizname);
+     echo'<h1 style="margin-left:12%;">REG NO: '.$std_id.'</h1>';
+     echo'<h1 style="margin-left:12%; margin-bottom:5%;">Answer Sheet for '.$quizname2['name'].'</h1>';
 
 echo'<!--this is the starting of page(after navbar) -->
-<form method="post" action="update.php?q=des&">
-  <table id="ans_table" style="width:70%;font-size:8mm;margin-left: auto;margin-right: auto;">
 
-    <tr style="font-size: 12mm;">
+<form method="post" action="update.php?q=des&">
+  <table id="ans_table" style="width:80%;font-size:8mm;margin-left: auto;margin-right: auto;">
+
+    <tr style="font-size: 9mm;">
             <td width="15%">Question</td>
             <td  width="70%">Answer</td>
             <td  width="15%">PMarks</td>
@@ -572,7 +575,7 @@ echo'<!--this is the starting of page(after navbar) -->
          
          // this varible will be used to get quiz id and student id
 
-        echo'<td><input  type="hidden" name="quiz_id" value='.$quiz.'></td>';
+        echo'<input  type="hidden" name="quiz_id" value='.$quiz.'>';
        $marks = mysqli_query($con, "SELECT pmarks,nmarks FROM question WHERE quiz_id='$quiz'");
        $result = mysqli_query($con, "SELECT question.text,student_response_des.answer FROM question inner join student_response_des  on question.question_id=student_response_des.question_id  where student_id='$std_id' and  student_response_des.quiz_id='$quiz' ");
           echo'<input type="hidden" name="std_id" value='.$std_id.' >';
@@ -596,22 +599,13 @@ echo'<!--this is the starting of page(after navbar) -->
     $end_time=mysqli_query($con,"SELECT end_time FROM quiz WHERE quiz_id='$quiz'");
     
 if($sub_time>=$end_time){$cnt++;
-      echo'<td> Enter marks to be deducted for late submission(with symbol): </td><td></td><td></td><td></td><td><input type="number" placeholder="" name="arr['.$cnt.']" value=0></td>';}
-      echo' 
+}echo' 
   </table>';
   
       echo'
     <input type="submit" name="submit" value="SUBMIT" 
-    style=" border:outset;background-color: #4CAF50;padding: 15px 32px;font-size: 16px;margin-left: 50%;"> 
-</form>
-
-  <!--this is button to go to previous page-->       
-  <button onclick="goBack()" style="border:outset;background-color: #f44336;padding: 15px 32px;font-size: 16px;margin-left: 50%;">Previous</button>
-    <script>
-      function goBack() {
-      window.history.back();
-      }
-    </script>';
+    style=" border:outset;color:white;background-color: #4CAF50;padding: 20px 40px;font-size: 25px;margin-left: 40%;margin-top:3%"> 
+</form>';
 
 }
 ?>

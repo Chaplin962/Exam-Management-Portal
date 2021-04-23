@@ -110,23 +110,24 @@ $tname = $row['name'];
 		if($today < $end_date && $today >= $start_date ){$time = 1;}
 		if($today < $start_date ){$time = 2;}
 
-		$qres=mysqli_query($con, ("SELECT text, question_id,type FROM question WHERE quiz_id='".$store_id."'" ));
+		$qres=mysqli_query($con, ("SELECT text,pmarks,nmarks, question_id,type FROM question WHERE quiz_id='".$store_id."'" ));
 		$i1=1;
 		while($q=mysqli_fetch_assoc($qres)):
 		$cares=mysqli_query($con, ("SELECT text FROM question_option WHERE question_id='".$q['question_id']."' AND is_correct='1'"));
 		?>
 		<form method="post">
-			<div class="trailtest1-qs">
-				<div class="trailtest1-heads">
+		<div id="test-div"></div>
+			<div class="trailtest1-heads">
 					<p class="trailtest1-nos">
 						Question - <?php echo $i1?>
 					</p>
+					<div class="tooltip"><img style="margin-top: 15px;margin-left: 10px; height: 17px; width:17px;" src="stock/info.jpg">
+	  				<span class="tooltiptext"><?php echo'Correct : + '.$q['pmarks'].' Wrong : '.-$q['nmarks'].'';?></span>
 				</div>
 				<br><br><br>
 				<div class="trailtest1-bodys"><p class="trailtest1-bodys-texts">
 						<?php echo $q['text'] ?>
 				</p></div>
-				<div class="trailtest1-anss">
 
 					<?php
 							$opres=mysqli_query($con,("SELECT option_id, text FROM question_option WHERE question_id='".$q['question_id']."'"));
@@ -144,8 +145,8 @@ $tname = $row['name'];
 							endif;
 							if($q['type']==1):
 					?>
-						<div class="trailtest1-anss-ops">
-							<textarea id="descriptive-box"  placeholder="Descriptive type"></textarea> 
+						<div class="trailtest1-anss-ops" >
+							<textarea id="descriptive-box"placeholder="Descriptive type"></textarea> 
 						</div>
 					<?php
 						endif;
@@ -173,7 +174,7 @@ $qid=$_GET['quiz_id'];
     $result3 =mysqli_query($con,"SELECT * FROM student_response_des where quiz_id = '$qid' and is_corrected=0")or die('Error');
 
     if(!mysqli_num_rows($result3)){
-    echo'<div><a id="trailtest1-sub1" href="teacher.php?q=7&qid='.$_GET['quiz_id'].'">RANKINGS</a></div>';
+    echo'<div id="rank-space"><a id="trailtest1-sub1" href="teacher.php?q=7&qid='.$_GET['quiz_id'].'">RANKINGS</a></div>';
         }
         else{
           echo'<div id="rank-space"><a id="trailtest1-sub1" href="teacher.php?q=6&quiz_id='.$_GET['quiz_id'].'">AWARD MARKS</a></div>';
@@ -181,8 +182,7 @@ $qid=$_GET['quiz_id'];
     }
 					echo'</form>';
 	?>
-		</div>
-	</div><br/>
+	<br/>
 <br/><br/>
 
 </body>

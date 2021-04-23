@@ -141,7 +141,7 @@ echo '
 		}}
 
 		    echo' </div><div id="test-div"></div>
-			<hr style="height:2px;border-width:0;color:gray;background-color:gray;margin-left:15%;margin-right:15%;">
+			<hr style="height:2px;border-width:0;color:gray;background-color:gray;margin-left:15%;margin-right:15%;box-shadow: 1px 1px;">
 		    <div id="test-div"></div>';}
         ?>
     </div>

@@ -110,7 +110,7 @@ $courses_no = $row['courses_no'];?>
 		if($today < $start_date ){$time = 2;}
 		if(($submit['num4']==0 && $time==1)|| $time==0):
 		$qres=mysqli_query($con, ("SELECT * FROM question WHERE quiz_id='".$store_id."' ORDER BY rand()" ));
-		$i1=1;if($time!=0){echo'<div class="timer-div"><p id="timer">Timer : </p> <p id="demo"></p></div>';}
+		$i1=1;if($time!=0){echo'<div class="timer-div"><p id="timer">Remaining Time: </p> <p id="demo"></p></div>';}
 		while($q=mysqli_fetch_assoc($qres)):
 		$cares=mysqli_query($con, ("SELECT text FROM question_option WHERE question_id='".$q['question_id']."' AND is_correct='1'"));
 		?>
@@ -151,16 +151,16 @@ $courses_no = $row['courses_no'];?>
 							if($q['type']==1&&$time==1):
 					?>
 						<div class="trailtest1-anss-ops">
-							<textarea id="descriptive-box" name="write_list[]" placeholder="Enter your answer here"rows="8" cols="100"></textarea>
+							<textarea id="descriptive-box" name="write_list[]" placeholder="Enter your answer here"rows="8" cols="80"></textarea>
 							<input type="hidden" name="write_question_list[]" value="<?php echo $q['question_id'] ?>"/>
 						</div>
 					<?php
 						endif;
-						$wrote_q="SELECT * FROM student_response_des WHERE question_id='".$q['question_id']."' AND student_id='".$student_id."' AND quiz_id='".$_GET['quiz_id']."'";
+						$wrote_q="SELECT * FROM student_response_des WHERE quiz_id='".$_GET['quiz_id']."' AND question_id='".$q['question_id']."' AND student_id='".$student_id."'";
                         $wrote_res=mysqli_query($con,$wrote_q);
                         $wrote=mysqli_fetch_assoc($wrote_res);
                         if($q['type']==1 && $time==0):
-							if(mysqli_fetch_assoc($wrote_res)):
+							if(mysqli_query($con,$wrote_q)):
                     ?>
                         <div class="your_answer">
                             <p>Your Answer : <?php echo $wrote['answer'] ;?></p>
@@ -178,13 +178,12 @@ $courses_no = $row['courses_no'];?>
 						<div class="correct_answer">
 													<p>Correct Answer :
 														<?php
-
 															$i2=0;
-															while($corans=mysqli_fetch_assoc($cares)){
+															while($corans=mysqli_fetch_assoc($cares))
+															{	
 																if($i2>0){echo ', ';}
 																echo $corans['text'];
 																$i2=1;
-
 															}
 														?>
 													</p>
@@ -227,7 +226,7 @@ $courses_no = $row['courses_no'];?>
 						$writequestionlist= $_POST["write_question_list"];
 						$i3=0;
 						foreach($writelist as $chk3){
-							$resquery1="INSERT INTO student_response_des(student_id,quiz_id,question_id,answer) VALUES ('".$student_id."','".$_GET['quiz_id']."','".$writequestionlist[$i3]."','".$chk3."')";
+							$resquery1="INSERT INTO student_response_des(student_id,quiz_id,question_id,answer,is_corrected) VALUES ('".$student_id."','".$_GET['quiz_id']."','".$writequestionlist[$i3]."','".$chk3."',0)";
 							$chop1=mysqli_query($con,$resquery1);
 							++$i3;
 						}
@@ -262,7 +261,7 @@ $courses_no = $row['courses_no'];?>
 							}
 						}
 						$today_sub=date("Y-m-d H:i:s");
-						$in_marksq="INSERT INTO student_marks(student_id,quiz_id,marks_obj,sub_time) VALUES('".$student_id."','".$store_id."','".$marks."','".$today_sub."')";
+						$in_marksq="INSERT INTO student_marks(student_id,quiz_id,marks_sub,marks_obj,sub_time) VALUES('".$student_id."','".$store_id."',0,'".$marks."','".$today_sub."')";
 						$in_marks=mysqli_query($con,$in_marksq);
 						echo '<script type="text/javascript"> ';
 				    echo 'window.location.replace("tests-s.php")';
