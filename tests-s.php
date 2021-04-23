@@ -10,9 +10,7 @@ $query = "SELECT * FROM student_list WHERE email='$email'";
 $result = mysqli_query($con2, $query);
 $row = mysqli_fetch_assoc($result);
 $student_id = $row['student_id'];
-$_SESSION['STUDENT_ID'] = $student_id;
 $name = $row['name'];
-$_SESSION['name'] = $name;
 $courses_no = $row['courses_no'];?>
 
 	<!-- Compating different devices and applicatons -->

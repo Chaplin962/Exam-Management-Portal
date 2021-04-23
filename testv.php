@@ -45,9 +45,7 @@ $query = "SELECT * FROM teacher_list WHERE email='$email'";
 $result = mysqli_query($con2, $query);
 $row = mysqli_fetch_assoc($result);
 $teacher_id = $row['id'];//session variable here
-$_SESSION['id'] = $teacher_id;
 $tname = $row['name'];
-$_SESSION['name'] = $tname;
 ?>
 
   <body class="current-page" id="tests">
