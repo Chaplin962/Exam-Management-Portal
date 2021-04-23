@@ -192,8 +192,17 @@ $courses_no = $row['courses_no'];?>
 									++$i1;
 									endwhile;
 									if($time==0){
+										$qid=$_GET['quiz_id'];
+									 $result3 =mysqli_query($con,"SELECT * FROM student_response_des where quiz_id = '$qid' and is_corrected=0")or die('Error');
+								  
+									  if(!mysqli_num_rows($result3)){
 										echo'<div id="rank-space"><a id="trailtest1-sub1" href="rank_list.php?quiz_id='.$_GET['quiz_id'].'">RANKINGS</a></div>';
-									}
+										}
+										  else{
+											echo'<button class="button" id="button" onclick="myFunction2()"style="padding:10px;background-color:green;color:white;margin-left:47%;margin-top:5%">Quiz Not Yet Corrected</button>';
+										  }
+
+										}
 									if($time == 1):
 					?>
 					<input type="submit" id="trailtest1-sub" value="Submit" name="submit"/>
@@ -303,5 +312,10 @@ $courses_no = $row['courses_no'];?>
     </script>
 <!-- Javascript file 2 -->
 <script type="text/javascript" src="z-effect2.js"></script>
-
+<script>
+function myFunction2() {
+  alert("The test is not yet corrected.");
+}
+</script>
+</body>
 </html>

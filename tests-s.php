@@ -131,14 +131,8 @@ echo '
       $name = $row['name'];
       $qid = $row['quiz_id'];
 
-    $result3 =mysqli_query($con,"SELECT * FROM student_response_des where quiz_id = '$qid' and is_corrected=0")or die('Error');
-
-    if(!mysqli_num_rows($result3)){
     echo' <a href="testg.php?quiz_id='.$qid.'" class="tests-cards" id="tests-card'.$d.'"><p class="tests-cards-text" id="tests-card'.$d++.'-text">'.$name.'</p></a>';
-        }
-        else{
-          echo' <a class="tests-cards" id="tests-card'.$d.'"><p class="tests-cards-text" id="tests-card'.$d++.'-text"><button class="button" id="button'.$b++.'" onclick="myFunction2()">'.$name.'</button></p></a>';
-		}}
+}
 
 		    echo' </div><div id="test-div"></div>
 			<hr style="height:2px;border-width:0;color:gray;background-color:gray;margin-left:15%;margin-right:15%;box-shadow: 1px 1px;">
@@ -152,12 +146,6 @@ function myFunction() {
   alert("The test is not accessible.");
 }
 </script>
-<script>
-function myFunction2() {
-  alert("The test is not yet corrected.");
-}
-</script>
-</body>
 
 <!-- Javascript file 2 -->
 <script type="text/javascript" src="z-effect2.js"></script>

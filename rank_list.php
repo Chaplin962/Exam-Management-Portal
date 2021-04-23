@@ -116,9 +116,9 @@ $courses_no = $row['courses_no'];?>
             ?>
                 </div>
    
-<script>
-function myFunction() {
-  alert("The test is not accessible.");
+                <script>
+function myFunction2() {
+  alert("The test is not yet corrected.");
 }
 </script>
 </body>
