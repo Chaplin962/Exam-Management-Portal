@@ -43,7 +43,7 @@ $tname = $row['name'];
 	<!-- Javascript file -->
 	<script type="text/javascript" src="z-effect.js"></script>
 
-<title>Add Quiz</title>
+<title>Add Test</title>
   <!-- Style sheet -->
 
 <link  rel="stylesheet" href="css/bootstrap.min.css"/>
@@ -115,7 +115,7 @@ if(!@$_GET['q']) {echo'please click on any of the tabs';}?>
 if(@$_GET['q']==1 && !(@$_GET['step']) ) {
 echo ' 
 <div class="row">
-<span class="title1" style="margin-left:40%;font-size:30px;"><b>Enter Quiz Details</b></span><br /><br />
+<span class="title1" style="margin-left:40%;font-size:30px;"><b>Enter Test Details</b></span><br /><br />
  <div class="col-md-3"></div><div class="col-md-6">   <form class="form-horizontal title1" name="form" action="update.php?q=addquiz"  method="POST">
 <fieldset>
 
@@ -123,7 +123,7 @@ echo '
 <div class="form-group">
   <label class="col-md-12 control-label" for="name"></label>  
   <div class="col-md-12">
-  <input id="name" name="name" placeholder="Enter Quiz title" class="form-control input-md" type="text">
+  <input id="name" name="name" placeholder="Enter Test title" class="form-control input-md" type="text">
     
   </div>
 </div>
