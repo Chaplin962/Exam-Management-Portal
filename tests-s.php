@@ -137,10 +137,11 @@ echo '
     echo' <a href="testg.php?quiz_id='.$qid.'" class="tests-cards" id="tests-card'.$d.'"><p class="tests-cards-text" id="tests-card'.$d++.'-text">'.$name.'</p></a>';
         }
         else{
-          echo' <a class="tests-cards" id="tests-card'.$d.'"><p class="tests-cards-text" id="tests-card'.$d++.'-text"><button class="button" id="button'.$b++.'" onclick="myFunction2()">'.$name.'</button></p></a>';}}
+          echo' <a class="tests-cards" id="tests-card'.$d.'"><p class="tests-cards-text" id="tests-card'.$d++.'-text"><button class="button" id="button'.$b++.'" onclick="myFunction2()">'.$name.'</button></p></a>';
+		}}
 
-
-		    echo' </div>
+		    echo' </div><div id="test-div"></div>
+			<hr style="height:2px;border-width:0;color:gray;background-color:gray;margin-left:15%;margin-right:15%;">
 		    <div id="test-div"></div>';}
         ?>
     </div>
