@@ -49,3 +49,5 @@ Team:
 4.[@pranav-k-m-iiitdwd](https://github.com/pranav-k-m-iiitdwd)
 5.[@raviss091](https://github.com/raviss091)
 6.[@Anuj-Sudhir-Kulkarni](https://github.com/Anuj-Sudhir-Kulkarni)
+7.[@NiranjanMeghwal](https://github.com/NiranjanMeghwal)
+
