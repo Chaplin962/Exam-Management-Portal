@@ -33,8 +33,8 @@ Admin Password: a
 
 In the case you do not understand the above instruction please refer to the user manual attached.
 
-* : Only in order to run the application.
+*: Only in order to run the application.
 
-** : Apache was used during the development phase(Via Xampp).
+**: Apache was used during the development phase(Via Xampp).
 
-*** : Only in order to run the application. A detailed step by step procedure can also be found in the user manual provided.
+***: Only in order to run the application. A detailed step by step procedure can also be found in the user manual provided.
