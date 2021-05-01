@@ -33,9 +33,10 @@ Admin Password: a
 
 In the case you do not understand the above instruction please refer to the user manual attached.
 
-For a live working demo visit: https://examsystememp.herokuapp.com
 * Only in order to run the application.
 
 ** Apache was used during the development phase(Via Xampp).
 
 *** Only in order to run the application. A detailed step by step procedure can also be found in the user manual provided.
+
+For a live working demo visit: https://examsystememp.herokuapp.com
