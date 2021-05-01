@@ -5,7 +5,9 @@ The Exam Management Portal provides students and teachers with a platform to con
 Software Requirements*:
 
 •	Web Server, preferably Apache**
+
 • Web Browser
+
 • MySQL
 
 Xampp was used during the development cycle of this project and thus this readme will be guiding the reader accordingly so.
