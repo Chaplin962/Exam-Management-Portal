@@ -21,8 +21,11 @@ Steps***:
 8. Make changes in the db.php file according to the databases.
 9. Type localhost onto the url section of the browser.
 10. Input the following into the login section and then add your email ID into the role required(admin, teacher or student).
+
 Admin Username: pranav.prakriya@gmail.com
+
 Admin Password: a
+
 11. Make sure to logout
 12. Sign up and Enter the details asked.
 
