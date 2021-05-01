@@ -43,12 +43,11 @@ In the case you do not understand the above instruction please refer to the user
 **For a live working demo visit: [Click Here](https://examsystememp.herokuapp.com)**
 
 Team:
-1.[@Chaplin962](https://github.com/Chaplin962)
-2.[@Maheshparihar231](https://github.com/Maheshparihar231)
-3.[@AbhisekRana](https://github.com/AbhisekRana)
-4.[@pranav-k-m-iiitdwd](https://github.com/pranav-k-m-iiitdwd)
-5.[@raviss091](https://github.com/raviss091)
-6.[@Anuj-Sudhir-Kulkarni](https://github.com/Anuj-Sudhir-Kulkarni)
-7.[@NiranjanMeghwal](https://github.com/NiranjanMeghwal)
-8.[@Abhay0912](https://github.com/Abhay0912)
-
+- [@Chaplin962](https://github.com/Chaplin962)
+- [@Maheshparihar231](https://github.com/Maheshparihar231)
+- [@AbhisekRana](https://github.com/AbhisekRana)
+- [@pranav-k-m-iiitdwd](https://github.com/pranav-k-m-iiitdwd)
+- [@raviss091](https://github.com/raviss091)
+- [@Anuj-Sudhir-Kulkarni](https://github.com/Anuj-Sudhir-Kulkarni)
+- [@NiranjanMeghwal](https://github.com/NiranjanMeghwal)
+- [@Abhay0912](https://github.com/Abhay0912)
