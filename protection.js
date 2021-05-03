@@ -2,7 +2,7 @@ $(document).ready(function () {
     // Disable full page (copy pasting)
     $('body').bind('cut copy paste', function (e) {
 		e.preventDefault();
-		alert("copy pasting functions are disabled");
+		alert("Copying and Pasting functions are disabled");
     });
 	 
 	/*
@@ -19,7 +19,7 @@ $(document).ready(function () {
 $(document).ready(function () {
     //Disable full page
     $("body").on("contextmenu",function(e){
-		alert("right click is not allowed");
+		alert("Right Click is not allowed");
 		return false;
     });
      
@@ -33,7 +33,7 @@ $(document).ready(function () {
 document.addEventListener('keyup', (e) => {
     if (e.key == 'PrintScreen') {
         navigator.clipboard.writeText('');
-        alert('Screenshots disabled!');
+        alert('Screenshots are disabled');
     }
 });
 
