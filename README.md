@@ -26,7 +26,7 @@ Steps***:
 
 Admin Username: pranav.prakriya@gmail.com
 
-Admin Password: a
+Admin Password: 123456789
 
 11. Make sure to logout
 12. Sign up and Enter the details asked.
