@@ -29,7 +29,7 @@ include_once 'db.php';
                 if($row['signstatus'] == 0) {
                     mysqli_query($con2,"UPDATE user_sign set signstatus=1 WHERE email='" . $email . "'");
                     $_SESSION['role'] = $row['role'];                
-                    $_SESSION['sign']=1;
+                    $_SESSION['sign']=0;
                     header("Location: index.php");
                 }
                 else {
