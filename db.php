@@ -15,13 +15,13 @@
     //remote server deployment
     $servername='remotemysql.com';
     $username='Jo8QJ7efP6';
-    $password='bCqMAklGyz';
+    $password='6OXTq1ZOQ2';
     $dbname = 'Jo8QJ7efP6';
     $con=mysqli_connect($servername,$username,$password,$dbname);
 
     $servername2='remotemysql.com';
     $username2='Jo8QJ7efP6';
-    $password2='bCqMAklGyz';
+    $password2='6OXTq1ZOQ2';
     $dbname2 = 'Jo8QJ7efP6';
     $con2=mysqli_connect($servername2,$username2,$password2,$dbname2);
 
