@@ -314,11 +314,12 @@ $courses_no = $row['courses_no'];?>
 window.addEventListener('blur', () => {
   siteTitle = document.title;
   document.title = 'TAB SWITCH DETECTED';
+  alert("Tab switching will result in loss of progress.");
+	location.reload();
 });
 
 window.addEventListener('focus', () => {
-	alert("Tab switching will result in loss of progress.");
-	location.reload();
+	
   document.title = siteTitle;
 });
     </script>
