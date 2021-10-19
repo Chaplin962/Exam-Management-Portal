@@ -309,6 +309,16 @@ $courses_no = $row['courses_no'];?>
         document.getElementById("demo").innerHTML = "SUBMIT NOW AS LATE ENTRY";
         }
         }, 1000);
+
+		let siteTitle = '';
+window.addEventListener('blur', () => {
+  siteTitle = document.title;
+  document.title = 'Come back! :c';
+});
+
+window.addEventListener('focus', () => {
+  document.title = siteTitle;
+});
     </script>
 <!-- Javascript file 2 -->
 <script type="text/javascript" src="z-effect2.js"></script>
