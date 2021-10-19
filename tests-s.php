@@ -145,6 +145,16 @@ echo '
 function myFunction() {
   alert("The test is not accessible.");
 }
+
+let siteTitle = '';
+window.addEventListener('blur', () => {
+  siteTitle = document.title;
+  document.title = 'Come back! :c';
+});
+
+window.addEventListener('focus', () => {
+  document.title = siteTitle;
+});
 </script>
 
 <!-- Javascript file 2 -->
