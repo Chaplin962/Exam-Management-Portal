@@ -313,10 +313,12 @@ $courses_no = $row['courses_no'];?>
 		let siteTitle = '';
 window.addEventListener('blur', () => {
   siteTitle = document.title;
-  document.title = 'Come back! :c';
+  document.title = 'TAB SWITCH DETECTED';
 });
 
 window.addEventListener('focus', () => {
+	alert("Tab switching will result in loss of progress.");
+	location.reload();
   document.title = siteTitle;
 });
     </script>
