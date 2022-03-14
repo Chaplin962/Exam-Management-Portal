@@ -34,9 +34,7 @@ In the case you do not understand the above instruction please refer to the user
 *** Only in order to run the application. A detailed step by step procedure can also be found in the user manual provided.
 
 
-**For a live working demo contact toemptest@gmail.com
-
-For any discussion, contact us at toemptest@gmail.com.
+For a live working demo or any discussion, contact us at toemptest@gmail.com.
 Team:
 - [@Abhishek Arya](https://github.com/Chaplin962)
 - [@Mahesh Parihar](https://github.com/Maheshparihar231)
