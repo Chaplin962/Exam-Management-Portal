@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2021 at 12:35 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.2
+-- Generation Time: Mar 15, 2022 at 02:46 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,7 +37,7 @@ CREATE TABLE `admin_list` (
 --
 
 INSERT INTO `admin_list` (`id`, `email`) VALUES
-(21, 'pranav.prakriya@gmail.com');
+(22, 'toemptest@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -67,7 +67,8 @@ CREATE TABLE `student_list` (
 --
 
 INSERT INTO `student_list` (`id`, `email`, `student_id`, `name`, `courses_no`, `course_1`, `course_2`, `course_3`, `course_4`, `course_5`, `course_6`, `course_7`, `course_8`, `course_9`) VALUES
-(5, '19bcs088@iiitdwd.ac.in', '19bcs088', '   Pranav K M', 1, 'CS101', '', '', '', '', '', '-', '-', '-');
+(8, '19bcs004@iiitdwd.ac.in', '19bcs004', '', 0, '-', '-', '-', '-', '-', '-', '-', '-', '-'),
+(9, '19bcs003@iiitdwd.ac.in', '19bcs003', '', 0, '-', '-', '-', '-', '-', '-', '-', '-', '-');
 
 -- --------------------------------------------------------
 
@@ -107,9 +108,10 @@ CREATE TABLE `user_sign` (
 --
 
 INSERT INTO `user_sign` (`id`, `email`, `password`, `role`, `signstatus`) VALUES
-(2, 'pranav.prakriya@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 'Admin', 0),
 (4, 'toabhishekarya@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 'Teacher', 1),
-(7, '19bcs088@iiitdwd.ac.in', '0cc175b9c0f1b6a831c399e269772661', 'Student', 1);
+(7, '19bcs088@iiitdwd.ac.in', '0cc175b9c0f1b6a831c399e269772661', 'Student', 1),
+(8, 'toemptest@gmail.com', 'a57c2e82f05ebce22109b3ada72a3f65', 'Admin', 0),
+(9, '19bcs003@iiitdwd.ac.in', 'd31a02f2c96079fc338e171626d412f0', 'Student', 0);
 
 --
 -- Indexes for dumped tables
@@ -147,13 +149,13 @@ ALTER TABLE `user_sign`
 -- AUTO_INCREMENT for table `admin_list`
 --
 ALTER TABLE `admin_list`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `student_list`
 --
 ALTER TABLE `student_list`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `teacher_list`
@@ -165,7 +167,7 @@ ALTER TABLE `teacher_list`
 -- AUTO_INCREMENT for table `user_sign`
 --
 ALTER TABLE `user_sign`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

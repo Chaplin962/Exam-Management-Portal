@@ -85,7 +85,8 @@ include_once 'db.php';
                 <div>
                     <button type="submit" name="signin" id="signin_button">Sign In</button>
                 </div>
-                <p id="signin_bellow">Not yet Signed Up ? <a href="SignUp.php">Sign Up</a></p>
+                <p id="signin_bellow">Not yet Signed Up? <a href="SignUp.php">Sign Up</a></p>
+		<p id="signin_bellow"><a href="Group6Brochure.pdf">Checkout out our Brochure</a></p>
             </form>
             <div id="signin_errors_container">
                 <?php foreach($errors as $error) : ?>
